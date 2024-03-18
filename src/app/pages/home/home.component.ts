@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { initFlowbite } from 'flowbite';
 
 @Component({
   selector: 'app-home',
@@ -21,6 +22,8 @@ export class HomeComponent implements OnInit {
       console.log(this.number_img_carousel);
       
     }, 5000)
+
+    initFlowbite();
   }
 
 }
