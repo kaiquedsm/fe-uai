@@ -7,7 +7,11 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: theme => ({
-        'main-image': 'radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(17,96,241,1) 80%, rgba(17,96,241,1) 100%)'
+        'main-image': 'radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(17,96,241,1) 80%, rgba(17,96,241,1) 100%)',
+        'border-carousel': 'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(96,45,225,1) 100%);'
+      }),
+      backgro: theme => ({
+        
       }),
       colors: {
         'purple-uai': '#602DE1',
