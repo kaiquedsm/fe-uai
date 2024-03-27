@@ -1,11 +1,14 @@
 <header class="bg-blue-uai text-white-uai h-16 flex justify-between items-center">
+    <div class="sm:hidden">
+        <fa-icon [icon]="faBars" class="p-10 text-xl"></fa-icon>
+    </div>
     <div class="h-full"><img src="../assets/imgs/projeto-marketing.JPG" alt="uAi" class="h-full"></div>
-    <div>
+    <div class="hidden sm:block">
         <button class="p-2">Início</button>
         <button class="p-2">Sobre nós</button>
         <button class="p-2">Contato</button>
     </div>
-    <div>
+    <div class="hidden sm:block">
         <button class="p-1 px-4 mr-10 border-white-uai border-solid border rounded-md">Entrar</button>
     </div>
 </header>

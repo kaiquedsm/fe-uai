@@ -5,7 +5,7 @@
 
         <img src="/assets/imgs/carousel_1/img_{{number_img_carousel}}.svg" alt="" class="w-full h-full">
 
-        <div class="absolute w-full h-full flex flex-col justify-between z-10 px-10 py-24">
+        <div class="absolute w-full h-full flex flex-col justify-between z-10 px-10 py-24 sm:w-1/2 sm:justify-center">
             <div class="my-4">
                 <h1 class="text-7xl">
                     A <span class="font-bold">tecnologia</span> que te <span class="font-bold">entende</span>!
@@ -18,8 +18,8 @@
                     minus dolore at, totam laudantium.
                 </p>
             </div>
-            <div class="flex flex-col w-1/2 mx-auto pt-6 space-y-6 font-semibold">
-                <button class="bg-white-uai text-blue-uai py-2 px-5 rounded-md mr-5">Começar</button>
+            <div class="flex flex-col w-1/2 mx-auto pt-6 space-y-6 font-semibold sm:flex-row sm:w-full sm:space-y-0">
+                <button class="bg-white-uai text-blue-uai py-2 px-5 rounded-md mr-5 sm:px-6">Começar</button>
                 <button>Fazer login</button>
             </div>
         </div>
@@ -27,29 +27,29 @@
 
 
 
-    <section class="mt-24">
-        <div class="w-2/3 m-6 mx-auto p-2 rounded-3xl shadow-2xl">
+    <section class="mt-24 sm:flex sm:m-0 sm:flex-wrap">
+        <div class="w-2/3 m-6 mx-auto p-2 rounded-3xl shadow-2xl sm:w-64">
             <img src="../../../assets/imgs/practicality.svg" alt="">
             <div class="pl-6 pb-4">
                 <h3>Praticidade</h3>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus doloribus aut eum.</p>
             </div>
         </div>
-        <div class="w-2/3 m-6 mx-auto p-2 rounded-3xl shadow-2xl">
+        <div class="w-2/3 m-6 mx-auto p-2 rounded-3xl shadow-2xl sm:w-64">
             <img src="../../../assets/imgs/acessibility.svg" alt="">
             <div class="pl-6 pb-4">
                 <h3>Acessibilidade</h3>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus doloribus aut eum.</p>
             </div>
         </div>
-        <div class="w-2/3 m-6 mx-auto p-2 rounded-3xl shadow-2xl">
+        <div class="w-2/3 m-6 mx-auto p-2 rounded-3xl shadow-2xl sm:w-64">
             <img src="../../../assets/imgs/knowledge.svg" alt="">
             <div class="pl-6 pb-4">
                 <h3>Conhecimento</h3>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus doloribus aut eum.</p>
             </div>
         </div>
-        <div class="w-2/3 m-6 mx-auto p-2 rounded-3xl shadow-2xl">
+        <div class="w-2/3 m-6 mx-auto p-2 rounded-3xl shadow-2xl sm:w-64">
             <img src="../../../assets/imgs/efficiency.svg" alt="">
             <div class="pl-6 pb-4">
                 <h3>Eficiência</h3>
@@ -136,7 +136,7 @@
         <div class="bg-border-carousel absolute top-0 right-0 h-full w-20">
 
         </div>
-        <div id="default-carousel" class="relative w-4/5 ml-auto" data-carousel="slide">
+        <div id="default-carousel" class="relative" data-carousel="slide">
             <!-- Carousel wrapper  -->
             <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
                 <!-- Item 1  -->
@@ -268,21 +268,23 @@
         </div>
     </section>
 
-    <section class="p-12">
-        <div class="w-2/3 mx-auto text-center space-y-4">
+    <section class="p-12 sm:flex">
+        <div class="w-2/3 mx-auto text-center space-y-4 sm:w-1/2 sm:text-start sm:px-4 sm:flex sm:flex-col sm:justify-center">
             <h2 class="text-4xl font-semibold">Redes sociais</h2>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate harum similique quis?</p>
             <div class="space-x-4">
                 <i class="fa-brands fa-facebook text-blue-uai bg-white-uai rounded-full text-3xl"></i>
                 <i class="fa-brands fa-instagram bg-blue-uai text-white text-3xl"></i>
             </div>
-            <img src="../../../assets/imgs/img_default.svg" class="mx-auto" alt="">
+        </div>
+        <div class="mt-4 sm:w-1/2">
+            <img src="../../../assets/imgs/img_default.svg" class="mx-auto sm:w-full" alt="">
         </div>
     </section>
 
 
 
-    <section class="p-12 bg-blue-uai text-white-uai">
+    <section class="p-12 bg-blue-uai text-white-uai sm:p-20">
         <div class="w-2/3 mx-auto text-center space-y-6">
             <h2 class="text-4xl font-semibold">Chamada para a ação</h2>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Provident possimus architecto reiciendis.</p>
