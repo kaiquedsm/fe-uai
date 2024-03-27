@@ -3,7 +3,13 @@
     <!-- usar calc no h-screen - 4rem -->
     <div class="relative bg-blue-uai h-carousel w-full text-white-uai flex flex-grow flex-col justify-center space-y-6">
 
-        <img src="/assets/imgs/carousel_1/img_{{number_img_carousel}}.svg" alt="" class="w-full h-full">
+        <div *ngIf="screen_width >= 640" class="w-full h-full">
+            <img src="/assets/imgs/carousel_1/2/img_{{number_img_carousel}}.svg" alt="" class="w-auto h-full bg-cover">
+        </div>
+        
+        <div *ngIf="screen_width < 640" class="w-full h-full">
+            <img #elseDiv src="/assets/imgs/carousel_1/1/img_{{number_img_carousel}}.svg" alt="" class="w-auto h-full bg-cover">
+        </div>
 
         <div class="absolute w-full h-full flex flex-col justify-between z-10 px-10 py-24 sm:w-1/2 sm:justify-center">
             <div class="my-4">
