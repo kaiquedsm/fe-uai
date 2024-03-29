@@ -7,12 +7,12 @@ import { initFlowbite } from 'flowbite';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
+
 export class HomeComponent implements OnInit {
   
   number_img_carousel: number = 1;
   screen_width: number = window.innerWidth
-  elseDiv!: TemplateRef<NgIfContext<boolean>>|null;
-  
+  elseDiv!: TemplateRef<NgIfContext<boolean>>|null;  
   
   constructor() { }
 
@@ -32,5 +32,7 @@ export class HomeComponent implements OnInit {
 
     initFlowbite();
   }
+
+
 
 }
