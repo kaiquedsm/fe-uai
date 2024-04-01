@@ -12,6 +12,10 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
+  }
+
+  /* ngOnInit(): void {
     setInterval(() => {
       if(this.number_img_carousel === 4) {
         this.number_img_carousel = 1
@@ -21,6 +25,6 @@ export class HomeComponent implements OnInit {
       console.log(this.number_img_carousel);
       
     }, 5000)
-  }
+  } */
 
 }
