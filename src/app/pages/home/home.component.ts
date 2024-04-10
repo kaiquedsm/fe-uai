@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,11 @@ export class HomeComponent implements OnInit {
   
   number_img_carousel: number = 1;
 
-  constructor() { }
+  constructor(private router: Router) { }
+  
+  loginCadastro() {
+    this.router.navigate(['/login-cadastro']);
+}
 
   ngOnInit(): void {
     

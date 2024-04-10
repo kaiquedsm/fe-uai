@@ -56,29 +56,52 @@ form.sign-in-form {
 
 .title {
   font-size: 2.2rem;
-  color: #444;
+  color: #1160f1;
+  font-weight: 700;
+  margin-block: -10px !important;
+}
+
+.sub-title {
+  font-size: 1.2rem;
+  color: #1160f1;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .input-field {
   max-width: 380px;
   width: 100%;
-  background-color: #f0f0f0;
+  background-color: #e9ecf2;
   margin: 10px 0;
-  height: 55px;
+  height: 45px;
   border-radius: 55px;
   display: grid;
-  grid-template-columns: 15% 85%;
-  padding: 0 0.4rem;
+  grid-template-columns: 85% 15%;
+  /* padding: 0 0.4rem; */
+  padding: 0rem 0rem 0rem 1rem;
   position: relative;
 }
 
 .input-field i {
   text-align: center;
-  line-height: 55px;
-  color: #acacac;
+  line-height: 45px;
+  color: #1160f1;
   transition: 0.5s;
   font-size: 1.1rem;
+  cursor: pointer;
+}
+
+#olho-fechado-login,
+#olho-fechado-cadastro {
+  display: none;
+}
+
+.display-eye-none {
+  display: none;
+}
+
+.display-eye {
+  display: block;
 }
 
 .input-field input {
@@ -88,42 +111,24 @@ form.sign-in-form {
   line-height: 1;
   font-weight: 600;
   font-size: 1.1rem;
-  color: #333;
+  color: #717886;
 }
 
 .input-field input::placeholder {
-  color: #aaa;
+  color: #717886;
   font-weight: 500;
+  font-size: 0.9rem;
 }
 
-.social-text {
-  padding: 0.7rem 0;
-  font-size: 1rem;
+.esqueci-senha-container {
+  margin-top: -1%;
+  width: 55%;
 }
 
-.social-media {
-  display: flex;
-  justify-content: center;
-}
-
-.social-icon {
-  height: 46px;
-  width: 46px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 0.45rem;
-  color: #333;
-  border-radius: 50%;
-  border: 1px solid #333;
-  text-decoration: none;
-  font-size: 1.1rem;
-  transition: 0.3s;
-}
-
-.social-icon:hover {
+.esqueceu-senha {
+  font-size: 0.8rem;
   color: #1160f1;
-  border-color: #1160f1;
+  font-weight: 600;
 }
 
 .btn {
@@ -142,12 +147,33 @@ form.sign-in-form {
 }
 
 .btn:hover {
-  background-color: #1160f1;
+  background-color: #000000;
 }
+
+.inputs-form {
+  margin-top: 10%;
+}
+
+.btn-forms {
+  margin-top: 10%;
+}
+
+.voltar {
+  width: 100%;
+  color: #1160f1;
+  margin-top: 3%;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.voltar i {
+  margin-right: 2%;
+}
+
 .panels-container {
   position: absolute;
   height: 100%;
-  width: 100%;
+  width: 90%;
   top: 0;
   left: 0;
   display: grid;
@@ -157,10 +183,14 @@ form.sign-in-form {
 .container:before {
   content: "";
   position: absolute;
-  height: 1500px;
+  /* height: 1500px;
   width: 1500px;
   top: -5%;
-  right: 48%;
+  right: 48%; */
+  height: 1300px;
+  width: 1300px;
+  top: 7%;
+  right: 52%;
   transform: translateY(-50%);
   background-image: linear-gradient(-45deg, #1160f1 0%, #1160f1 100%);
   transition: 1.8s ease-in-out;
@@ -172,7 +202,6 @@ form.sign-in-form {
   width: 100%;
   transition: transform 1.1s ease-in-out;
   transition-delay: 0.4s;
-  margin-top: -20%;
 }
 
 .panel {
@@ -203,7 +232,7 @@ form.sign-in-form {
 .panel h3 {
   font-weight: 600;
   line-height: 1;
-  font-size: 2.5rem;
+  font-size: 3rem;
 }
 
 /* .panel p {
