@@ -35,181 +35,189 @@
 
 
 
-    <section class="mt-24 sm:grid md:grid-cols-2 lg:grid-cols-4 sm:m-0">
-        <div class="w-2/3 m-6 mx-auto p-2 rounded-3xl shadow-2xl sm:w-64">
-            <img src="../../../assets/imgs/practicality.svg" alt="">
-            <div class="pl-6 pb-4">
-                <h3>Praticidade</h3>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus doloribus aut eum.</p>
+    <section class="mt-24 flex justify-center w-full">
+        <div class="w-3/4 sm:grid md:grid-cols-2 2xl:grid-cols-4 sm:m-0">
+            <div class="w-2/3 m-6 mx-auto p-2 rounded-3xl shadow-2xl sm:w-64">
+                <img src="../../../assets/imgs/practicality.svg" alt="">
+                <div class="pl-6 pb-4">
+                    <h3>Praticidade</h3>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus doloribus aut eum.</p>
+                </div>
             </div>
-        </div>
-        <div class="w-2/3 m-6 mx-auto p-2 rounded-3xl shadow-2xl sm:w-64">
-            <img src="../../../assets/imgs/acessibility.svg" alt="">
-            <div class="pl-6 pb-4">
-                <h3>Acessibilidade</h3>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus doloribus aut eum.</p>
+            <div class="w-2/3 m-6 mx-auto p-2 rounded-3xl shadow-2xl sm:w-64">
+                <img src="../../../assets/imgs/acessibility.svg" alt="">
+                <div class="pl-6 pb-4">
+                    <h3>Acessibilidade</h3>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus doloribus aut eum.</p>
+                </div>
             </div>
-        </div>
-        <div class="w-2/3 m-6 mx-auto p-2 rounded-3xl shadow-2xl sm:w-64">
-            <img src="../../../assets/imgs/knowledge.svg" alt="">
-            <div class="pl-6 pb-4">
-                <h3>Conhecimento</h3>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus doloribus aut eum.</p>
+            <div class="w-2/3 m-6 mx-auto p-2 rounded-3xl shadow-2xl sm:w-64">
+                <img src="../../../assets/imgs/knowledge.svg" alt="">
+                <div class="pl-6 pb-4">
+                    <h3>Conhecimento</h3>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus doloribus aut eum.</p>
+                </div>
             </div>
-        </div>
-        <div class="w-2/3 m-6 mx-auto p-2 rounded-3xl shadow-2xl sm:w-64">
-            <img src="../../../assets/imgs/efficiency.svg" alt="">
-            <div class="pl-6 pb-4">
-                <h3>Eficiência</h3>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus doloribus aut eum.</p>
+            <div class="w-2/3 m-6 mx-auto p-2 rounded-3xl shadow-2xl sm:w-64">
+                <img src="../../../assets/imgs/efficiency.svg" alt="">
+                <div class="pl-6 pb-4">
+                    <h3>Eficiência</h3>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus doloribus aut eum.</p>
+                </div>
             </div>
         </div>
     </section>
 
 
 
-    <section class="mt-24 mb-24">
+    <section class="my-24 flex justify-center w-full">
         <div class="w-2/3 mx-auto text-center space-y-8">
             <h2 class="text-purple-uai text-4xl font-semibold">Tutorial</h2>
             <p class="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium similique veniam sequi!</p>
             <iframe src="https://www.youtube.com/embed/1eLaBow7Zbo" frameborder="0" allowfullscreen class="w-full"
-                height="300"></iframe>
+                height="500"></iframe>
         </div>
     </section>
 
 
-    <section class="relative p-12 px-0 bg-purple-uai text-white">
+    <section class="p-12 px-0 bg-purple-uai text-white">
         <div class="w-2/3 mx-auto text-center space-y-6">
             <h2 class="text-4xl font-semibold">Depoimentos</h2>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis natus quo odio.</p>
         </div>
-        <!-- Item 1  -->
-        <div class="p-16">
-            <div class="flex gap-x-4 sm:overflow-x-auto">
-                <div
-                    class="w-96 p-8 text-start bg-white-uai rounded-3xl shrink-0 current-item item ml-48">
-                    <div class="h-full flex flex-col justify-between">
-                        <div class="flex items-center text-purple-uai">
-                            <img src="../../../assets/imgs/user_1.svg">
-                            <div class="ml-5">
-                                <h4 class="text-2xl font-bold">Nome Completo</h4>
-                                <div class="flex space-x-1">
-                                    <img src="../../../assets/imgs/star.svg" alt="">
-                                    <img src="../../../assets/imgs/star.svg" alt="">
-                                    <img src="../../../assets/imgs/star.svg" alt="">
-                                    <img src="../../../assets/imgs/star.svg" alt="">
-                                    <img src="../../../assets/imgs/star.svg" alt="">
+        <div class="w-full">
+            <div id="default-carousel" class="relative max-w-screen-lg mt-4 mx-auto" data-carousel="slide">
+                <!-- Carousel wrapper -->
+                <div class="relative flex justify-end w-1/2 h-80 mx-auto overflow-hidden rounded-lg">
+                    <!-- Item 1 -->
+                    <!-- sm:h-96 -->
+                    <div class="bg-purple-uai flex duration-700 ease-in-out" data-carousel-item>
+                        <div class="w-96 h-64 my-auto p-8 mx-auto text-start bg-white-uai rounded-3xl">
+                            <div class="h-full flex flex-col justify-between">
+                                <div class="flex items-center text-purple-uai">
+                                    <img src="../../../assets/imgs/user_1.svg">
+                                    <div class="ml-5">
+                                        <h4 class="text-2xl font-bold">Nome Completo</h4>
+                                        <div class="flex space-x-1">
+                                            <img src="../../../assets/imgs/star.svg" alt="">
+                                            <img src="../../../assets/imgs/star.svg" alt="">
+                                            <img src="../../../assets/imgs/star.svg" alt="">
+                                            <img src="../../../assets/imgs/star.svg" alt="">
+                                            <img src="../../../assets/imgs/star.svg" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-lg text-black font-semibold">"Lorem ipsum dolor sit amet consectetur
+                                        adipisicing elit. Consequatur doloribus aliquam praesentium."</p>
                                 </div>
                             </div>
                         </div>
-                        <div>
-                            <p class="text-lg text-black font-semibold">"Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Consequatur doloribus aliquam praesentium."</p>
-                        </div>
                     </div>
-                </div>
-                <!-- Item 2  -->
-                <div
-                    class="w-96 p-8 text-start bg-white-uai rounded-3xl shrink-0 current-item item">
-                    <div class="h-full flex flex-col justify-between">
-                        <div class="flex items-center text-purple-uai">
-                            <img src="../../../assets/imgs/user_2.svg">
-                            <div class="ml-5">
-                                <h4 class="text-2xl font-bold">Nome Completo</h4>
-                                <div class="flex space-x-1">
-                                    <img src="../../../assets/imgs/star.svg" alt="">
-                                    <img src="../../../assets/imgs/star.svg" alt="">
-                                    <img src="../../../assets/imgs/star.svg" alt="">
-                                    <img src="../../../assets/imgs/star.svg" alt="">
-                                    <img src="../../../assets/imgs/star.svg" alt="">
+                    <!-- Item 2 -->
+                    <div class="bg-purple-uai flex duration-700 ease-in-out" data-carousel-item>
+                        <div class="w-96 h-64 my-auto p-8 mx-auto text-start bg-white-uai rounded-3xl">
+                            <div class="h-full flex flex-col justify-between">
+                                <div class="flex items-center text-purple-uai">
+                                    <img src="../../../assets/imgs/user_2.svg">
+                                    <div class="ml-5">
+                                        <h4 class="text-2xl font-bold">Nome Completo</h4>
+                                        <div class="flex space-x-1">
+                                            <img src="../../../assets/imgs/star.svg" alt="">
+                                            <img src="../../../assets/imgs/star.svg" alt="">
+                                            <img src="../../../assets/imgs/star.svg" alt="">
+                                            <img src="../../../assets/imgs/star.svg" alt="">
+                                            <img src="../../../assets/imgs/star.svg" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-lg text-black font-semibold">"Lorem ipsum dolor sit amet consectetur
+                                        adipisicing elit. Consequatur doloribus aliquam praesentium."</p>
                                 </div>
                             </div>
                         </div>
-                        <div>
-                            <p class="text-lg text-black font-semibold">"Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Consequatur doloribus aliquam praesentium."</p>
-                        </div>
                     </div>
-                </div>
-                <!-- Item 3  -->
-                <div
-                    class="w-96 p-8 text-start bg-white-uai rounded-3xl shrink-0 current-item item">
-                    <div class="h-full flex flex-col justify-between">
-                        <div class="flex items-center text-purple-uai">
-                            <img src="../../../assets/imgs/user_3.svg">
-                            <div class="ml-5">
-                                <h4 class="text-2xl font-bold">Nome Completo</h4>
-                                <div class="flex space-x-1">
-                                    <img src="../../../assets/imgs/star.svg" alt="">
-                                    <img src="../../../assets/imgs/star.svg" alt="">
-                                    <img src="../../../assets/imgs/star.svg" alt="">
-                                    <img src="../../../assets/imgs/star.svg" alt="">
-                                    <img src="../../../assets/imgs/star.svg" alt="">
+                    <!-- Item 3 -->
+                    <div class="bg-purple-uai flex duration-700 ease-in-out" data-carousel-item>
+                        <div class="w-96 h-64 my-auto p-8 mx-auto text-start bg-white-uai rounded-3xl">
+                            <div class="h-full flex flex-col justify-between">
+                                <div class="flex items-center text-purple-uai">
+                                    <img src="../../../assets/imgs/user_3.svg">
+                                    <div class="ml-5">
+                                        <h4 class="text-2xl font-bold">Nome Completo</h4>
+                                        <div class="flex space-x-1">
+                                            <img src="../../../assets/imgs/star.svg" alt="">
+                                            <img src="../../../assets/imgs/star.svg" alt="">
+                                            <img src="../../../assets/imgs/star.svg" alt="">
+                                            <img src="../../../assets/imgs/star.svg" alt="">
+                                            <img src="../../../assets/imgs/star.svg" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-lg text-black font-semibold">"Lorem ipsum dolor sit amet consectetur
+                                        adipisicing elit. Consequatur doloribus aliquam praesentium."</p>
                                 </div>
                             </div>
                         </div>
-                        <div>
-                            <p class="text-lg text-black font-semibold">"Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Consequatur doloribus aliquam praesentium."</p>
-                        </div>
                     </div>
                 </div>
+                <!-- Slider indicators -->
+                <!-- -bottom-8 -->
+                <div class="absolute bottom-0 z-30 flex -translate-x-1/2 left-1/2 space-x-3 rtl:space-x-reverse">
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1"
+                        data-carousel-slide-to="0"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2"
+                        data-carousel-slide-to="1"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3"
+                        data-carousel-slide-to="2"></button>
+                </div>
+                <!-- Slider controls -->
+                <button type="button"
+                    class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                    data-carousel-prev>
+                    <span
+                        class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                        <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M5 1 1 5l4 4" />
+                        </svg>
+                        <span class="sr-only">Previous</span>
+                    </span>
+                </button>
+                <button type="button"
+                    class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                    data-carousel-next>
+                    <span
+                        class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                        <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 9 4-4-4-4" />
+                        </svg>
+                        <span class="sr-only">Next</span>
+                    </span>
+                </button>
             </div>
-            <!-- Slider indicators  -->
-            <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
-                <button type="button" class="w-3 h-3 rounded-full bg-white" aria-current="true" aria-label="Slide 1"
-                    data-carousel-slide-to="0"></button>
-                <button type="button" class="w-3 h-3 rounded-full bg-white" aria-current="false" aria-label="Slide 2"
-                    data-carousel-slide-to="1"></button>
-                <button type="button" class="w-3 h-3 rounded-full bg-white" aria-current="false" aria-label="Slide 3"
-                    data-carousel-slide-to="2"></button>
-                <!-- <button type="button" class="w-3 h-3 rounded-full bg-white" aria-current="false"
-                            aria-label="Slide 4" data-carousel-slide-to="3"></button>
-                        <button type="button" class="w-3 h-3 rounded-full bg-white" aria-current="false"
-                            aria-label="Slide 5" data-carousel-slide-to="4"></button> -->
-            </div>
-            <!-- Slider controls  -->
-            <button type="button"
-                class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-                data-carousel-prev>
-                <span
-                    class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                    <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M5 1 1 5l4 4" />
-                    </svg>
-                    <span class="sr-only">Previous</span>
-                </span>
-            </button>
-            <button type="button"
-                class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-                data-carousel-next>
-                <span
-                    class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                    <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 9 4-4-4-4" />
-                    </svg>
-                    <span class="sr-only">Next</span>
-                </span>
-            </button>
         </div>
     </section>
 
-    <section class="p-12 sm:flex">
-        <div
-            class="w-2/3 mx-auto text-center space-y-4 sm:w-1/2 sm:text-start sm:px-4 sm:flex sm:flex-col sm:justify-center">
-            <h2 class="text-4xl font-semibold">Redes sociais</h2>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate harum similique quis?</p>
-            <div class="space-x-4">
-                <i class="fa-brands fa-facebook text-blue-uai bg-white-uai rounded-full text-3xl"></i>
-                <i class="fa-brands fa-instagram bg-blue-uai text-white text-3xl"></i>
+    <section class="p-12">
+        <div class="w-3/4 flex flex-col justify-between mx-auto sm:flex-row sm:justify-center">
+            <div
+                class="text-center space-y-4 sm:w-1/2 sm:text-start sm:px-4 sm:flex sm:flex-col sm:justify-center">
+                <h2 class="text-4xl font-semibold">Redes sociais</h2>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate harum similique quis?</p>
+                <div class="space-x-4">
+                    <i class="fa-brands fa-facebook text-blue-uai bg-white-uai rounded-full text-3xl"></i>
+                    <i class="fa-brands fa-instagram bg-blue-uai text-white text-3xl"></i>
+                </div>
             </div>
-        </div>
-        <div class="mt-4 sm:w-1/2">
-            <img src="../../../assets/imgs/img_default.svg" class="mx-auto sm:w-full" alt="">
+            <div class="mt-4 sm:ml-auto">
+                <img src="../../../assets/imgs/img_default.svg" class="mx-auto sm:w-full" alt="">
+            </div>
         </div>
     </section>
 
