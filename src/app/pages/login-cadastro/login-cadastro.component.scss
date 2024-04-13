@@ -170,10 +170,29 @@ form.sign-in-form {
   margin-right: 2%;
 }
 
+.termos-de-uso {
+  display: flex;
+  width: 55%;
+  margin-top: -1%;
+}
+
+input[type="checkbox"] {
+  border-color: #1160f1;
+  width: 15px;
+  height: 15px;
+  margin-top: 0.5%;
+}
+
+.termos-de-uso-text {
+  margin-left: 2%;
+  font-size: 0.8rem;
+  color: #1160f1;
+}
+
 .panels-container {
   position: absolute;
   height: 100%;
-  width: 90%;
+  width: 100%;
   top: 0;
   left: 0;
   display: grid;
@@ -215,12 +234,12 @@ form.sign-in-form {
 
 .left-panel {
   pointer-events: all;
-  padding: 3rem 17% 2rem 12%;
+  padding: 3rem 32% 2rem 0%;
 }
 
 .right-panel {
   pointer-events: none;
-  padding: 3rem 12% 2rem 17%;
+  padding: 3rem 20% 2rem 17%;
 }
 
 .panel .content {
@@ -340,6 +359,7 @@ form.sign-in-form {
   }
 
   .panel .content {
+    display: flex;
     padding-right: 15%;
     transition: transform 0.9s ease-in-out;
     transition-delay: 0.8s;
