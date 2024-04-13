@@ -1,0 +1,8 @@
+.carousel {   
+    max-width: 100%;   
+    // overflow: hidden;  
+    img {      
+        opacity: 1;     
+        transition: opacity 5s ease-in-out;   
+    } 
+}
