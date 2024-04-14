@@ -84,14 +84,16 @@
     </section>
 
 
-    <section class="p-12 px-0 bg-purple-uai text-white">
+    <section class="relative p-12 px-0 bg-purple-uai text-white">
         <div class="w-2/3 mx-auto text-center space-y-6">
             <h2 class="text-4xl font-semibold">Depoimentos</h2>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis natus quo odio.</p>
         </div>
+        <div class="absolute top-0 right-0 w-16 h-full bg-border-carousel">
+        </div>
         <div class="w-full">
-            <div *ngIf="screen_width >= 640">
-                <div id="default-carousel" class="relative max-w-screen-lg mt-4 mx-auto" data-carousel="slide">
+            <div *ngIf="screen_width >= 640" class="relative max-w-screen-lg mt-4 mx-auto">
+                <div id="default-carousel" data-carousel="slide">
                     <!-- Carousel wrapper -->
                     <div class="relative flex justify-end w-1/2 h-80 mx-auto overflow-hidden rounded-lg">
                         <!-- Item 1 -->
@@ -180,7 +182,7 @@
                     </div>
                     <!-- Slider controls -->
                     <button type="button"
-                        class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                        class="none sm:block absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
                         data-carousel-prev>
                         <span
                             class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
@@ -193,7 +195,7 @@
                         </span>
                     </button>
                     <button type="button"
-                        class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                        class="none sm:block absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
                         data-carousel-next>
                         <span
                             class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
@@ -207,76 +209,67 @@
                     </button>
                 </div>
             </div>
-            <div *ngIf="screen_width < 640">
-                <!-- sm:h-96 -->
-                <div class="bg-purple-uai flex duration-700 ease-in-out" data-carousel-item>
-                    <div class="w-96 h-64 my-auto p-8 mx-auto text-start bg-white-uai rounded-3xl overflow-hidden">
-                        <div class="h-full flex flex-col justify-between">
-                            <div class="flex items-center text-purple-uai">
-                                <img src="../../../assets/imgs/user_1.svg">
-                                <div class="ml-5">
-                                    <h4 class="text-2xl font-bold">Nome Completo</h4>
-                                    <div class="flex space-x-1">
-                                        <img src="../../../assets/imgs/star.svg" alt="">
-                                        <img src="../../../assets/imgs/star.svg" alt="">
-                                        <img src="../../../assets/imgs/star.svg" alt="">
-                                        <img src="../../../assets/imgs/star.svg" alt="">
-                                        <img src="../../../assets/imgs/star.svg" alt="">
-                                    </div>
+            <div *ngIf="screen_width < 640" class="flex overflow-x-auto gap-8 mt-4">
+                <div class="w-96 h-64 my-auto p-8 mx-auto text-start bg-white-uai rounded-3xl overflow-auto shrink-0 ml-16">
+                    <div class="h-full flex flex-col justify-between">
+                        <div class="flex items-center text-purple-uai">
+                            <img src="../../../assets/imgs/user_1.svg">
+                            <div class="ml-5">
+                                <h4 class="text-2xl font-bold">Nome Completo</h4>
+                                <div class="flex space-x-1">
+                                    <img src="../../../assets/imgs/star.svg" alt="">
+                                    <img src="../../../assets/imgs/star.svg" alt="">
+                                    <img src="../../../assets/imgs/star.svg" alt="">
+                                    <img src="../../../assets/imgs/star.svg" alt="">
+                                    <img src="../../../assets/imgs/star.svg" alt="">
                                 </div>
                             </div>
-                            <div>
-                                <p class="text-lg text-black font-semibold">"Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit. Consequatur doloribus aliquam praesentium."</p>
-                            </div>
+                        </div>
+                        <div>
+                            <p class="text-lg text-black font-semibold">"Lorem ipsum dolor sit amet consectetur
+                                adipisicing elit. Consequatur doloribus aliquam praesentium."</p>
                         </div>
                     </div>
                 </div>
-                <!-- Item 2 -->
-                <div class="bg-purple-uai flex duration-700 ease-in-out" data-carousel-item>
-                    <div class="w-96 h-64 my-auto p-8 mx-auto text-start bg-white-uai rounded-3xl overflow-hidden">
-                        <div class="h-full flex flex-col justify-between">
-                            <div class="flex items-center text-purple-uai">
-                                <img src="../../../assets/imgs/user_2.svg">
-                                <div class="ml-5">
-                                    <h4 class="text-2xl font-bold">Nome Completo</h4>
-                                    <div class="flex space-x-1">
-                                        <img src="../../../assets/imgs/star.svg" alt="">
-                                        <img src="../../../assets/imgs/star.svg" alt="">
-                                        <img src="../../../assets/imgs/star.svg" alt="">
-                                        <img src="../../../assets/imgs/star.svg" alt="">
-                                        <img src="../../../assets/imgs/star.svg" alt="">
-                                    </div>
+                <div class="w-96 h-64 my-auto p-8 mx-auto text-start bg-white-uai rounded-3xl overflow-auto shrink-0">
+                    <div class="h-full flex flex-col justify-between">
+                        <div class="flex items-center text-purple-uai">
+                            <img src="../../../assets/imgs/user_2.svg">
+                            <div class="ml-5">
+                                <h4 class="text-2xl font-bold">Nome Completo</h4>
+                                <div class="flex space-x-1">
+                                    <img src="../../../assets/imgs/star.svg" alt="">
+                                    <img src="../../../assets/imgs/star.svg" alt="">
+                                    <img src="../../../assets/imgs/star.svg" alt="">
+                                    <img src="../../../assets/imgs/star.svg" alt="">
+                                    <img src="../../../assets/imgs/star.svg" alt="">
                                 </div>
                             </div>
-                            <div>
-                                <p class="text-lg text-black font-semibold">"Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit. Consequatur doloribus aliquam praesentium."</p>
-                            </div>
+                        </div>
+                        <div>
+                            <p class="text-lg text-black font-semibold">"Lorem ipsum dolor sit amet consectetur
+                                adipisicing elit. Consequatur doloribus aliquam praesentium."</p>
                         </div>
                     </div>
                 </div>
-                <!-- Item 3 -->
-                <div class="bg-purple-uai flex duration-700 ease-in-out" data-carousel-item>
-                    <div class="w-96 h-64 my-auto p-8 mx-auto text-start bg-white-uai rounded-3xl overflow-auto">
-                        <div class="h-full flex flex-col justify-between">
-                            <div class="flex items-center text-purple-uai">
-                                <img src="../../../assets/imgs/user_3.svg">
-                                <div class="ml-5">
-                                    <h4 class="text-2xl font-bold">Nome Completo</h4>
-                                    <div class="flex space-x-1">
-                                        <img src="../../../assets/imgs/star.svg" alt="">
-                                        <img src="../../../assets/imgs/star.svg" alt="">
-                                        <img src="../../../assets/imgs/star.svg" alt="">
-                                        <img src="../../../assets/imgs/star.svg" alt="">
-                                        <img src="../../../assets/imgs/star.svg" alt="">
-                                    </div>
+                <div class="w-96 h-64 my-auto p-8 mx-auto text-start bg-white-uai rounded-3xl overflow-auto shrink-0">
+                    <div class="h-full flex flex-col justify-between">
+                        <div class="flex items-center text-purple-uai">
+                            <img src="../../../assets/imgs/user_3.svg">
+                            <div class="ml-5">
+                                <h4 class="text-2xl font-bold">Nome Completo</h4>
+                                <div class="flex space-x-1">
+                                    <img src="../../../assets/imgs/star.svg" alt="">
+                                    <img src="../../../assets/imgs/star.svg" alt="">
+                                    <img src="../../../assets/imgs/star.svg" alt="">
+                                    <img src="../../../assets/imgs/star.svg" alt="">
+                                    <img src="../../../assets/imgs/star.svg" alt="">
                                 </div>
                             </div>
-                            <div>
-                                <p class="text-lg text-black font-semibold">"Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit. Consequatur doloribus aliquam praesentium."</p>
-                            </div>
+                        </div>
+                        <div>
+                            <p class="text-lg text-black font-semibold">"Lorem ipsum dolor sit amet consectetur
+                                adipisicing elit. Consequatur doloribus aliquam praesentium."</p>
                         </div>
                     </div>
                 </div>

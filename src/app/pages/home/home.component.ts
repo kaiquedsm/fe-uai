@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   images_2: string[] = ['../../../assets/imgs/carousel_1/2/img_1.svg', '../../../assets/imgs/carousel_1/2/img_2.svg', '../../../assets/imgs/carousel_1/2/img_3.svg', '../../../assets/imgs/carousel_1/2/img_4.svg',]; 
   image_op: string[] = [];
   currentIndex: number = 0;
+  isDesktop: boolean = true;
   
   constructor() { }
 
@@ -24,8 +25,15 @@ export class HomeComponent implements OnInit {
     
     // this.startCarousel();
     
-    window.addEventListener('resize', () => {
+   window.addEventListener('resize', () => {
       this.screen_width = window.innerWidth;
+      console.log(this.screen_width);
+      
+      if(this.screen_width >= 640) {
+        return this.isDesktop = true
+      } else {
+        return this.isDesktop = false
+      }
    });
    
    if(this.screen_width >= 640) {
@@ -55,7 +63,5 @@ export class HomeComponent implements OnInit {
   startCarousel(): void {
      // Alterar a imagem a cada 3 segundos (3000 milissegundos)  
   }
-    
-
 
 }
