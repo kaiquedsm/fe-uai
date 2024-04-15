@@ -18,7 +18,7 @@ module.exports = {
         'darkgray-uai': '#212236',
       },
       height: {
-        carousel: 'calc(100vh - 4rem)',
+        'carousel': 'calc(100vh - 4rem)',
         '76': '19rem'
       },
       gridTemplateRows: {
