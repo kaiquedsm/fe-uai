@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { BehaviorSubject } from 'rxjs';
+import { Usuario } from '../models/usuario.models';
 
 export type DadosLogin = {
   cpf: string,
@@ -35,6 +36,10 @@ export class UserService {
 
   autenticar(dadosLogin: DadosLogin) {
     return this.http.post<RespostaLogin>(`${environment.target}/auth/token`, dadosLogin);
+  }
+
+  cadastrarCasual(usuario: Usuario) {
+    return this.http.post(`${environment.target}/casual`, usuario);
   }
 
 }

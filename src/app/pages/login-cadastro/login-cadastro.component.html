@@ -26,31 +26,31 @@
                 <button class="voltar"><i class="fa-solid fa-arrow-left"></i>Voltar</button>
 
             </form>
-            <form action="#" class="sign-up-form">
+            <form [formGroup]="cadastroForm" class="sign-up-form">
                 <h2 class="title">Olá!</h2>
                 <p class="sub-title">Faça seu cadastro para<br> entrar no site</p>
                 <div class="input-field">
-                    <input type="text" placeholder="Nome completo" />
+                    <input type="text" placeholder="Nome completo" formControlName="nomeCompleto" />
                 </div>
                 <div class="input-field">
-                    <input type="email" placeholder="E-mail" />
+                    <input type="email" placeholder="E-mail" formControlName="email" />
                 </div>
                 <div class="input-field">
-                    <input type="number" placeholder="Data de nascimento" />
+                    <input type="date" placeholder="Data de nascimento" formControlName="dataNascimento" />
                 </div>
                 <div class="input-field">
-                    <input type="number" placeholder="CPF" />
+                    <input type="text" placeholder="CPF" formControlName="cpf" />
                 </div>
                 <div class="input-field">
-                    <input type="password" placeholder="Senha" id="senhaCadastro" />
+                    <input type="password" placeholder="Senha" id="senhaCadastro" formControlName="senha" />
                     <i class="fa-regular fa-eye" id="olho-aberto-cadastro"></i>
                     <i class="fa-regular fa-eye-slash" id="olho-fechado-cadastro"></i>
                 </div>
                 <div class="termos-de-uso">
-                    <input type="checkbox" name="termsOfUse" id="termsOfUse" class="termos-de-uso-checkbox">
+                    <input type="checkbox" name="termsOfUse" id="termsOfUse" class="termos-de-uso-checkbox" formControlName="termosUso">
                     <p class="termos-de-uso-text">Li e concordo com o termos de uso</p>
                 </div>
-                <input type="submit" class="btn" value="Cadastrar" />
+                <input type="submit" class="btn" value="Cadastrar" (click)="cadastrar()"/>
                 <button class="voltar"><i class="fa-solid fa-arrow-left"></i>Voltar</button>
 
             </form>
@@ -72,7 +72,7 @@
         <div class="panel right-panel">
             <div class="content">
                 <h3>Já possui cadastro?</h3>
-                <button class="btn transparent" id="sign-in-btn">
+                <button class="btn transparent" id="sign-in-btn" #signInBtn>
                     Fazer Login
                 </button>
                 <img src="../../../assets/imgs/login-cadastro/imagem-mockup-uAI2.png"
