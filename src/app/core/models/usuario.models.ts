@@ -1,7 +1,7 @@
 export interface Usuario{
     id: Number,
-    nomeCompleto: String,
-    dataNascimento: String,
-    cpf: String,
-    senha: String,
+    nomeCompleto: string,
+    dataNascimento: string,
+    cpf: string,
+    senha: string,
 }
