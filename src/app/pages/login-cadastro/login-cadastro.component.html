@@ -1,21 +1,28 @@
 <div class="container">
     <div class="forms-container">
         <div class="signin-signup">
-            <form action="#" class="sign-in-form">
+            <form class="sign-in-form">
                 <h2 class="title">Bem-vindo!</h2>
                 <p class="sub-title">Faça seu login para continuar</p>
                 <div class="input-field inputs-form">
-                    <input type="email" placeholder="E-mail" />
+                    <input type="text" placeholder="CPF" [formControl]="cpfFormControl" />
+                    <!-- <div *ngIf="enviado && cpfFormControl.errors">
+                        O CPF precisa ser informado
+                    </div> -->
                 </div>
                 <div class="input-field">
-                    <input type="password" placeholder="Senha" id="senha" />
+                    <input type="password" placeholder="Senha" id="senha" [formControl]="senhaFormControl" />
                     <i class="fa-regular fa-eye" id="olho-aberto-login"></i>
                     <i class="fa-regular fa-eye-slash" id="olho-fechado-login"></i>
-                </div>
+                    <!-- <div *ngIf="enviado && senhaFormControl.errors">
+                        A senha precisa ser informada
+                    </div> -->
+                </div>                
+
                 <div class="esqueci-senha-container">
                     <a href="#" class="esqueceu-senha">Esqueci minha senha</a>
                 </div>
-                <input type="submit" value="Login" class="btn solid btn-forms" />
+                <input value="Login" type="submit" class="btn solid btn-forms" (click)="login()" />
                 <button class="voltar"><i class="fa-solid fa-arrow-left"></i>Voltar</button>
 
             </form>
