@@ -13,6 +13,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginCadastroComponent } from './pages/login-cadastro/login-cadastro.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ChatComponent } from './pages/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FooterComponent,
     HeaderComponent,
     HomeComponent,
-    LoginCadastroComponent
+    LoginCadastroComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
