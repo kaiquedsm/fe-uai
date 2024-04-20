@@ -14,6 +14,8 @@ module.exports = {
         'purple-uai': '#602DE1',
         'cian-uai': '#90E0EF',
         'blue-uai': '#1160F1',
+        'blue-uai-10': '#e8ecfc',
+        'blue-uai-70': '#d0e8f4',
         'white-uai': '#FFFFFF',
         'darkgray-uai': '#212236',
       },
