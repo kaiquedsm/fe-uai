@@ -100,7 +100,7 @@ export class LoginCadastroComponent implements OnInit {
         next: (response) => {
           localStorage.setItem('dadosLogin', JSON.stringify(response)); // Salvei os dados do login no localStorage.
           this.userService.dadosLogin.next(response);
-          this.router.navigate(['/']); // Aqui eu redireciono o usuário de volta pra home se deu certo. Quando a próxima tela depois do login estiver pronta, deve ser redirecionado pra lá.
+          this.router.navigate(['/chat']); // Aqui eu redireciono o usuário de volta pra home se deu certo. Quando a próxima tela depois do login estiver pronta, deve ser redirecionado pra lá.
         },
         error: (err:
           {

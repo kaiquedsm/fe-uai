@@ -9,11 +9,12 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { HeaderComponent } from './layouts/header/header.component';
 
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginCadastroComponent } from './pages/login-cadastro/login-cadastro.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChatComponent } from './pages/chat/chat.component';
+import { RequestInterceptor } from './core/services/request-interceptor';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { ChatComponent } from './pages/chat/chat.component';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [HttpClient],
+  providers: [HttpClient, { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

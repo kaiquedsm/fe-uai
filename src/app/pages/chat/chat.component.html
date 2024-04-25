@@ -73,46 +73,36 @@
 
                 </div> -->
                 <div class="overflow-y-scroll" style="scrollbar-width: none;">
-                    <div class="flex gap-3 items-end my-6 justify-end">
-                        <div
-                            class="bg-blue-uai-10 p-3 rounded-tr-lg rounded-tl-lg rounded-bl-lg break-words w-1/2">
-                            <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi maiores tenetur,
-                                blanditiis
-                                debitis laudantium ex voluptate consectetur iste dignissimos debitis laudantium ex voluptate
-                                consectetur iste dignissimos facilis! debitis laudantium ex voluptate consectetur iste dignissimos
-                            </span>
-                        </div>
 
-                        <div class="flex justify-center rounded-full bg-purple-uai-50 p-2 w-10 h-10">
-                            <img src="../../../assets/imgs/person.svg" class="h-15 w-15" alt="Icone uAi" />
-                        </div>
-                    </div>
+                    <div *ngFor="let mensagem of mensagens" class="flex gap-3 items-end my-6"
+                        [ngClass]="{'justify-end': mensagem.origemMensagem === 'USUARIO_ABERTURA'}">
 
-                    <div class="flex gap-3 items-end my-6">
-                        <div class="flex justify-center rounded-full bg-blue-uai p-2 w-10 h-10">
+                        <div class="flex justify-center rounded-full bg-blue-uai p-2 w-10 h-10" *ngIf="mensagem.origemMensagem !== 'USUARIO_ABERTURA'">
                             <img src="../../../assets/imgs/icon-logo-white.svg" class="h-15 w-15" alt="Icone uAi" />
                         </div>
-    
-                        <div
-                            class="bg-blue-uai-10 p-3 rounded-tr-lg rounded-tl-lg rounded-br-lg break-words w-1/2">
-                            <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi maiores tenetur,
-                                blanditiis
-                                debitis laudantium ex voluptate consectetur iste dignissimos debitis laudantium ex voluptate
-                                consectetur iste dignissimos facilis! debitis laudantium ex voluptate consectetur iste dignissimos
+
+                        <div class="bg-blue-uai-10 p-3 rounded-tr-lg rounded-tl-lg rounded-br-lg break-words w-1/2" *ngIf="mensagem.origemMensagem !== 'USUARIO_ABERTURA'">
+                            <span>{{ mensagem.texto}}</span>
+                        </div>
+                        
+                        <div class="bg-blue-uai-10 p-3 rounded-tr-lg rounded-tl-lg rounded-bl-lg break-words w-1/2" *ngIf="mensagem.origemMensagem === 'USUARIO_ABERTURA'">
+                            <span>
+                                {{ mensagem.texto }}
                             </span>
                         </div>
+
+                        <div class="flex justify-center rounded-full bg-purple-uai-50 p-2 w-10 h-10" *ngIf="mensagem.origemMensagem === 'USUARIO_ABERTURA'">
+                            <img src="../../../assets/imgs/person.svg" class="h-15 w-15" alt="Icone uAi" />
+                        </div>
+
                     </div>
-
-                    
-
-                    
                 </div>
 
 
                 <div class="w-full flex justify-end items-center relative mb-7">
-                    <input placeholder="Digite uma pergunta para o uAI"
+                    <input placeholder="Digite uma pergunta para o uAI" [formControl]="mensagemFormControl"
                         class="border shadow-md rounded-full py-3 px-4 w-full placeholder-gray-400" />
-                    <div class="absolute bg-blue-uai p-3 rounded-full mr-1.5">
+                    <div class="absolute bg-blue-uai p-3 rounded-full mr-1.5" (click)="enviarMensagem()">
                         <img src="../../../assets/imgs/send.svg" class=" w-4 h-4 " alt="Icone de lupa" />
                     </div>
                 </div>
