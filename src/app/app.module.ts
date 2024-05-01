@@ -15,6 +15,7 @@ import { LoginCadastroComponent } from './pages/login-cadastro/login-cadastro.co
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChatComponent } from './pages/chat/chat.component';
 import { RequestInterceptor } from './core/services/request-interceptor';
+import { ModuloComponent } from './pages/modulo/modulo.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { RequestInterceptor } from './core/services/request-interceptor';
     HeaderComponent,
     HomeComponent,
     LoginCadastroComponent,
-    ChatComponent
+    ChatComponent,
+    ModuloComponent
   ],
   imports: [
     BrowserModule,

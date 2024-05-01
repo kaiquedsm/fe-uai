@@ -26,15 +26,17 @@
             </div>
 
             <hr>
-            <div class="px-6" *ngFor="let topico of topicos">
-                <div
-                    class="flex justify-center items-center rounded-xl p-3 transition-colors duration-300 hover:bg-blue-uai-10">
-                    <div class="mr-3">
-                        <img src="../../../assets/imgs/chat_bubble.svg" class="w-4 h-4" alt="Icone de chat" />
-                    </div>
-                    <span class="font-semibold">Nome da conversa...</span>
-                    <div class="bg-blue-uai-70 p-1.5 rounded-full ml-6">
-                        <img src="../../../assets/imgs/close.svg" class=" w-2 h-2" alt="Icone de fechar" />
+            <div class="overflow-y-auto h-[60vh] overflow-scrollbar-hidden">
+                <div class="px-6" *ngFor="let topico of topicos">
+                    <div
+                        class="flex justify-center items-center rounded-xl p-3 transition-colors duration-300 hover:bg-blue-uai-10 cursor-pointer">
+                        <div class="mr-3">
+                            <img src="../../../assets/imgs/chat_bubble.svg" class="w-4 h-4" alt="Icone de chat" />
+                        </div>
+                        <span class="font-semibold">Nome da conversa...</span>
+                        <!-- <div class="bg-blue-uai-70 p-1.5 rounded-full ml-6">
+                            <img src="../../../assets/imgs/close.svg" class=" w-2 h-2" alt="Icone de fechar" />
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -50,11 +52,11 @@
                 </div>
 
                 <div class="flex justify-between items-center">
-                    <span class="font-semibold mr-3">Nome pessoa</span>
+                    <span class="font-semibold mr-3">{{nomeUsuario}}</span>
                     <div class="flex justify-center rounded-full bg-purple-uai-50 p-3 w-12 h-12">
                         <img src="../../../assets/imgs/person.svg" class="h-15 w-15" alt="Icone usuário" />
                     </div>
-                    <div class="flex justify-center rounded-xl bg-purple-uai p-2 ml-6">
+                    <div class="flex justify-center rounded-xl bg-purple-uai p-2 ml-6 cursor-pointer">
                         <img src="../../../assets/imgs/arrow_back.svg" class="h-4 w-4" alt="Icone seta para voltar" />
                     </div>
                 </div>
@@ -101,8 +103,8 @@
 
                 <div class="w-full flex justify-end items-center relative mb-7">
                     <input placeholder="Digite uma pergunta para o uAI" [formControl]="mensagemFormControl"
-                        class="border shadow-md rounded-full py-3 px-4 w-full placeholder-gray-400" />
-                    <div class="absolute bg-blue-uai p-3 rounded-full mr-1.5" (click)="enviarMensagem()">
+                        class="border shadow-md rounded-full py-3 px-4 w-full placeholder-gray-400" (keyup.enter)="enviarMensagem()"/>
+                    <div class="absolute bg-blue-uai p-3 rounded-full mr-1.5 cursor-pointer" (click)="enviarMensagem()">
                         <img src="../../../assets/imgs/send.svg" class=" w-4 h-4 " alt="Icone de lupa" />
                     </div>
                 </div>

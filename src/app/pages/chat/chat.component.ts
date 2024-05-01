@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { debounceTime } from 'rxjs';
 import { Chat } from 'src/app/core/models/chat.models';
 import { Mensagem } from 'src/app/core/models/mensagem.models';
 import { ChatService } from 'src/app/core/services/chat.service';
 import { NecessidadeService } from 'src/app/core/services/necessidade.service';
+import { UserService } from 'src/app/core/services/user.service';
 import { WebsocketService } from 'src/app/core/services/websocket.service';
 
 @Component({
@@ -17,16 +19,17 @@ export class ChatComponent implements OnInit {
 
   mensagemFormControl: FormControl = new FormControl('', Validators.required);
 
-  topicos: Chat[] = [
+  topicos: Chat[] = [];
 
-  ];
+  nomeUsuario?: string;
 
   mensagens: Mensagem[] = [];
 
   constructor(
     private necessidadeService: NecessidadeService,
     private chatService: ChatService,
-    private webSocketService: WebsocketService
+    private webSocketService: WebsocketService,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -53,7 +56,8 @@ export class ChatComponent implements OnInit {
           })
       }
     });
-
+    this.nomeUsuario = this.userService.dadosLogin.getValue()?.body?.usuarioLogado;
+    
   }
 
   enviarMensagem() {
@@ -63,6 +67,7 @@ export class ChatComponent implements OnInit {
         texto: this.mensagemFormControl.value,
         origemMensagem: 'USUARIO_ABERTURA'
       }).subscribe();
+      this.mensagemFormControl.setValue('');
     }
   }
 
