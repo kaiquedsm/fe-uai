@@ -13,8 +13,8 @@ export class HomeComponent implements OnInit {
   number_img_carousel: number = 1;
   screen_width: number = window.innerWidth
   elseDiv!: TemplateRef<NgIfContext<boolean>>|null;  
-  images_1: string[] = ['../../../assets/imgs/carousel_1/1/img_1.svg', '../../../assets/imgs/carousel_1/1/img_2.svg', '../../../assets/imgs/carousel_1/1/img_3.svg', '../../../assets/imgs/carousel_1/1/img_4.svg',]; 
-  images_2: string[] = ['../../../assets/imgs/carousel_1/2/img_1.svg', '../../../assets/imgs/carousel_1/2/img_2.svg', '../../../assets/imgs/carousel_1/2/img_3.svg', '../../../assets/imgs/carousel_1/2/img_4.svg',]; 
+  images_1: string[] = ['../../../assets/imgs/carousel_1/1/1.png', '../../../assets/imgs/carousel_1/1/2.png', '../../../assets/imgs/carousel_1/1/3.png', '../../../assets/imgs/carousel_1/1/4.png',]; 
+  images_2: string[] = ['../../../assets/imgs/carousel_1/2/1.png', '../../../assets/imgs/carousel_1/2/2.png', '../../../assets/imgs/carousel_1/2/3.png', '../../../assets/imgs/carousel_1/2/4.png',]; 
   image_op: string[] = [];
   currentIndex: number = 0;
   isDesktop: boolean = true;
