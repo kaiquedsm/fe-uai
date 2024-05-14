@@ -6,3 +6,10 @@
         transition: opacity 5s ease-in-out;   
     } 
 }
+
+
+.space-y-6 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: 0;
+    margin-bottom: calc(1.5rem* var(--tw-space-y-reverse));
+}

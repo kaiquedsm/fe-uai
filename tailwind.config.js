@@ -21,6 +21,9 @@ module.exports = {
         'carousel': 'calc(100vh - 4rem)',
         '76': '19rem'
       },
+      screens: {
+        'menu-car-1': '520px',
+      },
       gridTemplateRows: {
         'landing': 'auto 1fr'
       }
