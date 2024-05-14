@@ -1,10 +1,125 @@
-<div class="flex justify-center items-center h-screen flex-col gap-5">
-    <div>
-        <h4 class="text-2xl font-semibold text-blue-uai">Escolha um Módulo para continuar</h4>
-    </div>
-    <button class="flex rounded-lg p-4 shadow-md text-blue-uai" (click)="habilitarInput()"> Escolar </button>
-    <div *ngIf="habiltarInputModulo">
-        <input placeholder="Digite aqui sua necessidade" 
-            class="border shadow-md rounded-full py-3 px-4 placeholder-gray-400 w-[20rem]" />
-    </div>
-</div>
+<main>
+    <section class="relative">
+        <img src="../../../assets/imgs/module-bg.png" class="w-full" alt="Background Image" />
+        <div class="absolute inset-0 flex justify-start items-center text-white">
+            <div class="ml-16">
+                <h2 class=" text-6xl">Mãe, garanta o <br> <span class="font-bold">sucesso escolar</span> <br> do seu
+                    filho!</h2>
+                <p class="mt-6 text-3xl">Módulo educação já <br> disponível!</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="flex flex-col justify-center items-center px-16 bg-blue-light-uai">
+        <div>
+            <h2 class="text-5xl text-blue-uai my-16 font-bold">Módulos</h2>
+        </div>
+
+        <div class="grid auto-rows-fr grid-cols-3 gap-7">
+            <div class="p-6 rounded-3xl shadow-2xl bg-blue-uai">
+                <div class="flex justify-center w-fit rounded-xl bg-white-uai p-3 mb-6">
+                    <img src="../../../assets/imgs/book_4.svg" class="h-8 w-8" alt="icon de livro" />
+                </div>
+
+                <div class="text-white-uai">
+                    <h3 class="text-2xl font-bold mb-2">Educação</h3>
+                    <p>Este módulo educacional da uAI oferece suporte personalizado para crianças em suas atividades
+                        escolares. Utilizando inteligência artificial, fornece explicações claras, resolução de
+                        problemas e sugestões de atividades em várias disciplinas.</p>
+                </div>
+            </div>
+
+            <div class="flex justify-center items-center bg-gray-gradient p-6 rounded-3xl shadow-md">
+                <div class="flex flex-col justify-center items-center text-center gap-y-4">
+                    <img src="../../../assets/imgs/lock.svg" class="h-8 w-8" alt="icon de cadeado" />
+                    <h3 class="text-2xl font-bold mb-2">Módulo 2</h3>
+                    <p class="text-xl font-bold">Módulo disponível em <br> breve</p>
+                </div>
+            </div>
+
+            <div class="flex justify-center items-center bg-gray-gradient p-6 rounded-3xl shadow-md">
+                <div class="flex flex-col justify-center items-center text-center gap-y-4">
+                    <img src="../../../assets/imgs/lock.svg" class="h-8 w-8" alt="icon de cadeado" />
+                    <h3 class="text-2xl font-bold mb-2">Módulo 2</h3>
+                    <p class="text-xl font-bold">Módulo disponível em <br> breve</p>
+                </div>
+            </div>
+
+            <div class="flex justify-center items-center bg-gray-gradient p-6 rounded-3xl shadow-md">
+                <div class="flex flex-col justify-center items-center text-center gap-y-4">
+                    <img src="../../../assets/imgs/lock.svg" class="h-8 w-8" alt="icon de cadeado" />
+                    <h3 class="text-2xl font-bold mb-2">Módulo 2</h3>
+                    <p class="text-xl font-bold">Módulo disponível em <br> breve</p>
+                </div>
+            </div>
+
+            <div class="flex justify-center items-center bg-gray-gradient p-6 rounded-3xl shadow-md">
+                <div class="flex flex-col justify-center items-center text-center gap-y-4">
+                    <img src="../../../assets/imgs/lock.svg" class="h-8 w-8" alt="icon de cadeado" />
+                    <h3 class="text-2xl font-bold mb-2">Módulo 2</h3>
+                    <p class="text-xl font-bold">Módulo disponível em <br> breve</p>
+                </div>
+            </div>
+
+            <div class="flex justify-center items-center bg-gray-gradient p-6 rounded-3xl shadow-md">
+                <div class="flex flex-col justify-center items-center text-center gap-y-4">
+                    <img src="../../../assets/imgs/lock.svg" class="h-8 w-8" alt="icon de cadeado" />
+                    <h3 class="text-2xl font-bold mb-2">Módulo 2</h3>
+                    <p class="text-xl font-bold">Módulo disponível em <br> breve</p>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h2 class="text-5xl text-blue-uai my-16 font-bold">Chats Recentes</h2>
+        </div>
+    </section>
+
+    <section class="flex flex-col items-center px-16 bg-blue-uai">
+        <div class="w-4/5 flex justify-end items-center relative">
+            <input placeholder="Pesquisar"
+                class="border shadow-md rounded-full py-1 px-4 w-full placeholder-gray-400" />
+            <div class="absolute bg-blue-uai p-1.5 rounded-full mr-1">
+                <img src="../../../assets/imgs/mystery.svg" class=" w-4 h-4 " alt="Icone de lupa" />
+            </div>
+        </div>
+
+        <div class="flex flex-col gap-y-3 py-6 w-full">
+            <div
+                class="flex justify-center items-center rounded-xl p-3 transition-colors duration-300 relative bg-blue-uai hover:bg-blue-uai-ho-35 cursor-pointer">
+                <div class="absolute inset-0 bg-white-uai opacity-15 rounded-xl"></div>
+                <div class="flex items-center">
+                    <div class="mr-3">
+                        <img src="../../../assets/imgs/chat_bubble_white.svg" class="w-4 h-4 text-white-uai"
+                            alt="Icone de chat" />
+                    </div>
+                    <span class="font-semibold text-white-uai">Nome da conversa...</span>
+                </div>
+            </div>
+
+            <div
+                class="flex justify-center items-center rounded-xl p-3 transition-colors duration-300 relative bg-blue-uai hover:bg-blue-uai-ho-35 cursor-pointer">
+                <div class="absolute inset-0 bg-white-uai opacity-15 rounded-xl"></div>
+                <div class="flex items-center">
+                    <div class="mr-3">
+                        <img src="../../../assets/imgs/chat_bubble_white.svg" class="w-4 h-4 text-white-uai"
+                            alt="Icone de chat" />
+                    </div>
+                    <span class="font-semibold text-white-uai">Nome da conversa...</span>
+                </div>
+            </div>
+
+            <div
+                class="flex justify-center items-center rounded-xl p-3 transition-colors duration-300 relative bg-blue-uai hover:bg-blue-uai-ho-35 cursor-pointer">
+                <div class="absolute inset-0 bg-white-uai opacity-15 rounded-xl"></div>
+                <div class="flex items-center">
+                    <div class="mr-3">
+                        <img src="../../../assets/imgs/chat_bubble_white.svg" class="w-4 h-4 text-white-uai"
+                            alt="Icone de chat" />
+                    </div>
+                    <span class="font-semibold text-white-uai">Nome da conversa...</span>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

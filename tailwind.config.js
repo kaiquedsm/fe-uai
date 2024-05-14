@@ -17,6 +17,7 @@ module.exports = {
         'blue-uai': '#1160F1',
         'blue-uai-10': '#e8ecfc',
         'blue-uai-70': '#d0e8f4',
+        'blue-uai-ho-35': '#2596be',
         'blue-light-uai': '#F1F6FF',
         'white-uai': '#FFFFFF',
         'darkgray-uai': '#212236',
