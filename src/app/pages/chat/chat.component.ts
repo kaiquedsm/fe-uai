@@ -33,6 +33,8 @@ export class ChatComponent implements OnInit {
 
   mensagemFormControl: FormControl = new FormControl('', Validators.required);
 
+  submitted: boolean = false;
+
   private mensagemEnviada = new Subject<string>();
 
   constructor(
@@ -57,6 +59,7 @@ export class ChatComponent implements OnInit {
         }).subscribe({
           complete: () => {
             this.mensagemFormControl.setValue('');
+            this.submitted = false;
           }
         });
       }
@@ -128,6 +131,7 @@ export class ChatComponent implements OnInit {
   }
 
   enviarMensagem() {
+    this.submitted = true;
     if (this.mensagemFormControl.valid) {
       this.mensagemEnviada.next(this.mensagemFormControl.value);
     }

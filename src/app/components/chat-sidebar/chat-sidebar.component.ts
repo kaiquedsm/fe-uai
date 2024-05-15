@@ -27,6 +27,8 @@ export class ChatSidebarComponent implements OnInit, OnChanges {
   pesquisaFormControl: FormControl = new FormControl('');
   novaConversaFormControl: FormControl = new FormControl('', Validators.required);
 
+  submitted: boolean = false;
+
   tituloChatVisivel: boolean = false;
 
   constructor(
@@ -54,6 +56,7 @@ export class ChatSidebarComponent implements OnInit, OnChanges {
   }
 
   criarChat() {
+    this.submitted = true;
     if (this.novaConversaFormControl.valid) {
       const chat: Chat = {
         titulo: this.novaConversaFormControl.value
@@ -61,6 +64,7 @@ export class ChatSidebarComponent implements OnInit, OnChanges {
       this.onTituloCriado.emit(chat);
       this.tituloChatVisivel = false;
       this.novaConversaFormControl.reset();
+      this.submitted = false;
     }
   }
 
