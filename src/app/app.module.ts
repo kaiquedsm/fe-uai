@@ -16,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChatComponent } from './pages/chat/chat.component';
 import { RequestInterceptor } from './core/services/request-interceptor';
 import { ModuloComponent } from './pages/modulo/modulo.component';
+import { ChatSidebarComponent } from './components/chat-sidebar/chat-sidebar.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ModuloComponent } from './pages/modulo/modulo.component';
     HomeComponent,
     LoginCadastroComponent,
     ChatComponent,
-    ModuloComponent
+    ModuloComponent,
+    ChatSidebarComponent
   ],
   imports: [
     BrowserModule,

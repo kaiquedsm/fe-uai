@@ -1,54 +1,23 @@
-<main class="grid grid-flow-row-dense grid-cols-5">
-    <section class="col-span-1">
-        <div>
-            <div class="flex justify-start flex-col p-6">
-                <div class="mb-12">
-                    <button class="flex gap-4 justify-center rounded-full items-center shadow-md">
-                        <div class="bg-blue-uai rounded-s-full py-2 px-3">
-                            <img class="h-4 w-4" src="../../../assets/imgs/add.svg">
-                        </div>
-                        <div class="rounded-e-full pr-3">
-                            <span class="text-blue-uai font-medium">Nova conversa</span>
-                        </div>
-                    </button>
-                </div>
-                <div class="mb-6">
-                    <h4 class="text-2xl font-semibold text-blue-uai">Recentes</h4>
-                </div>
-
-                <div class=" flex justify-end items-center relative">
-                    <input placeholder="Pesquisar"
-                        class="border shadow-md rounded-full py-1 px-4 w-full placeholder-gray-400" />
-                    <div class="absolute bg-blue-uai p-1.5 rounded-full mr-1">
-                        <img src="../../../assets/imgs/mystery.svg" class=" w-4 h-4 " alt="Icone de lupa" />
-                    </div>
-                </div>
-            </div>
-
-            <hr>
-            <div class="overflow-y-auto h-[60vh] overflow-scrollbar-hidden">
-                <div class="px-6" *ngFor="let topico of topicos">
-                    <div
-                        class="flex justify-center items-center rounded-xl p-3 transition-colors duration-300 hover:bg-blue-uai-10 cursor-pointer">
-                        <div class="mr-3">
-                            <img src="../../../assets/imgs/chat_bubble.svg" class="w-4 h-4" alt="Icone de chat" />
-                        </div>
-                        <span class="font-semibold">Nome da conversa...</span>
-                        <!-- <div class="bg-blue-uai-70 p-1.5 rounded-full ml-6">
-                            <img src="../../../assets/imgs/close.svg" class=" w-2 h-2" alt="Icone de fechar" />
-                        </div> -->
-                    </div>
-                </div>
-            </div>
+<main class="grid grid-flow-row-dense grid-cols-5 h-screen">
+    <section
+        class="col-span-5 block absolute -translate-x-[200%] z-10 min-w-[90vw] bg-white transition-transform ease-in-out duration-500 rounded-lg h-full lg:col-span-1 lg:block lg:relative lg:-translate-x-0 lg:min-w-0"
+        [ngClass]="{'-translate-x-[0%]': sidebarHabilitada}">
+        <div
+            class="lg:hidden absolute top-4 right-[-1.25rem] bg-blue-uai rounded-full w-10 h-10 flex flex-col items-center justify-center">
+            <fa-icon [icon]="close" class="text-xl text-white" (click)="sidebarHabilitada = false"></fa-icon>
         </div>
+        <app-chat-sidebar (onChatSelecionado)="carregarMensagens($event)" (onTituloCriado)="criarChat($event)" [topicos]="topicos"></app-chat-sidebar>
     </section>
 
 
-    <section class="col-span-4 bg-blue-light-uai shadow-md">
-        <div class="px-6 py-1 bg-blue-light-uai shadow-md mb-4">
-            <div class="flex justify-between items-center">
-                <div class="">
-                    <img src="../../../assets/imgs/logotipo.svg" class="h-14 w-14" alt="Logo uAI" />
+    <section class="col-span-5 lg:col-span-4 bg-blue-light-uai flex flex-col"
+        [ngClass]="{'blur-sm': sidebarHabilitada}">
+        <div class="py-2 bg-blue-light-uai shadow-md z-10">
+            <div class="flex justify-between items-center px-6">
+                <div>
+                    <img src="../../../assets/imgs/logotipo.svg" class="h-14 w-14 hidden lg:block" alt="Logo uAI" />
+                    <fa-icon [icon]="bars" class="text-xl text-blue-uai block lg:hidden"
+                        (click)="sidebarHabilitada = true"></fa-icon>
                 </div>
 
                 <div class="flex justify-between items-center">
@@ -56,7 +25,8 @@
                     <div class="flex justify-center rounded-full bg-purple-uai-50 p-3 w-12 h-12">
                         <img src="../../../assets/imgs/person.svg" class="h-15 w-15" alt="Icone usuário" />
                     </div>
-                    <div class="flex justify-center rounded-xl bg-purple-uai p-2 ml-6 cursor-pointer">
+                    <div class="flex justify-center rounded-xl bg-purple-uai p-2 ml-6 cursor-pointer"
+                        [routerLink]="['/modulo']">
                         <img src="../../../assets/imgs/arrow_back.svg" class="h-4 w-4" alt="Icone seta para voltar" />
                     </div>
                 </div>
@@ -64,8 +34,38 @@
         </div>
 
 
-        <div class="h-[91.5vh] px-12 bg-blue-light-uai">
-            <div class="flex items-center h-full flex-col justify-between">
+        <div class="lg:px-12 px-3 bg-blue-light-uai flex-grow flex flex-col">
+            <div #chatbox class="overflow-y-scroll w-full flex-grow max-h-[78vh]" style="scrollbar-width: none;">
+
+                <div *ngFor="let mensagem of mensagens;" class="flex gap-3 items-end my-6"
+                    [ngClass]="{'justify-end': mensagem.origemMensagem === 'USUARIO_ABERTURA'}">
+
+                    <div class="flex justify-center rounded-full bg-blue-uai p-2 w-10 h-10"
+                        *ngIf="mensagem.origemMensagem !== 'USUARIO_ABERTURA'">
+                        <img src="../../../assets/imgs/icon-logo-white.svg" class="h-15 w-15" alt="Icone uAi" />
+                    </div>
+
+                    <div class="bg-blue-uai-10 p-3 rounded-tr-lg rounded-tl-lg rounded-br-lg break-words w-max"
+                        *ngIf="mensagem.origemMensagem !== 'USUARIO_ABERTURA'">
+                        <span>{{ mensagem.texto}}</span>
+                    </div>
+
+                    <div class="bg-blue-uai-10 p-3 rounded-tr-lg rounded-tl-lg rounded-bl-lg break-words w-max"
+                        *ngIf="mensagem.origemMensagem === 'USUARIO_ABERTURA'">
+                        <span>
+                            {{ mensagem.texto }}
+                        </span>
+                    </div>
+
+                    <div class="flex justify-center rounded-full bg-purple-uai-50 p-2 w-10 h-10"
+                        *ngIf="mensagem.origemMensagem === 'USUARIO_ABERTURA'">
+                        <img src="../../../assets/imgs/person.svg" class="h-15 w-15" alt="Icone uAi" />
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="flex items-center flex-col">
                 <!-- <div>
 
                 </div> -->
@@ -74,36 +74,10 @@
                     <h4 class="text-4xl font-semibold text-gray-600">Olá, nome da pessoa! <br> Como posso ajudar?</h4>
 
                 </div> -->
-                <div class="overflow-y-scroll" style="scrollbar-width: none;">
-
-                    <div *ngFor="let mensagem of mensagens" class="flex gap-3 items-end my-6"
-                        [ngClass]="{'justify-end': mensagem.origemMensagem === 'USUARIO_ABERTURA'}">
-
-                        <div class="flex justify-center rounded-full bg-blue-uai p-2 w-10 h-10" *ngIf="mensagem.origemMensagem !== 'USUARIO_ABERTURA'">
-                            <img src="../../../assets/imgs/icon-logo-white.svg" class="h-15 w-15" alt="Icone uAi" />
-                        </div>
-
-                        <div class="bg-blue-uai-10 p-3 rounded-tr-lg rounded-tl-lg rounded-br-lg break-words w-1/2" *ngIf="mensagem.origemMensagem !== 'USUARIO_ABERTURA'">
-                            <span>{{ mensagem.texto}}</span>
-                        </div>
-                        
-                        <div class="bg-blue-uai-10 p-3 rounded-tr-lg rounded-tl-lg rounded-bl-lg break-words w-1/2" *ngIf="mensagem.origemMensagem === 'USUARIO_ABERTURA'">
-                            <span>
-                                {{ mensagem.texto }}
-                            </span>
-                        </div>
-
-                        <div class="flex justify-center rounded-full bg-purple-uai-50 p-2 w-10 h-10" *ngIf="mensagem.origemMensagem === 'USUARIO_ABERTURA'">
-                            <img src="../../../assets/imgs/person.svg" class="h-15 w-15" alt="Icone uAi" />
-                        </div>
-
-                    </div>
-                </div>
-
-
-                <div class="w-full flex justify-end items-center relative mb-7">
+                <div class="w-full flex justify-end items-center lg:mb-7 mb-10">
                     <input placeholder="Digite uma pergunta para o uAI" [formControl]="mensagemFormControl"
-                        class="border shadow-md rounded-full py-3 px-4 w-full placeholder-gray-400" (keyup.enter)="enviarMensagem()"/>
+                        class="border shadow-md rounded-full py-3 px-4 w-full placeholder-gray-400"
+                        (keyup.enter)="enviarMensagem()" />
                     <div class="absolute bg-blue-uai p-3 rounded-full mr-1.5 cursor-pointer" (click)="enviarMensagem()">
                         <img src="../../../assets/imgs/send.svg" class=" w-4 h-4 " alt="Icone de lupa" />
                     </div>
