@@ -30,7 +30,6 @@ export class UserService {
     if (dadosLoginLocalStorage) {
       const dadosLoginObjeto = JSON.parse(dadosLoginLocalStorage);
       this.dadosLogin?.next(dadosLoginObjeto);
-      console.log(this.dadosLogin.value);
     }
   }
 

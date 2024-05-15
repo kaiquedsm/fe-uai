@@ -1,5 +1,5 @@
 export interface Mensagem {
-    id?: number,
+    id?: string,
     idChat: number,
     idUsuario?: number,
     nomeUsuario?: string,

@@ -1,0 +1,53 @@
+<div class="h-screen w-[90vw] lg:w-auto flex flex-col">
+    <div class="flex justify-start flex-col p-6">
+        <div class="mb-12">
+            <button class="flex gap-4 justify-center rounded-full items-center shadow-md"
+                (click)="tituloChatVisivel = !tituloChatVisivel">
+                <div class="bg-blue-uai rounded-s-full py-2 px-3">
+                    <img class="h-4 w-4" src="../../../assets/imgs/add.svg">
+                </div>
+                <div class="rounded-e-full pr-3">
+                    <span class="text-blue-uai font-medium">Nova conversa</span>
+                </div>
+            </button>
+            <div class="mt-12 flex flex-col transition-opacity ease-in-out duration-300"
+                [ngClass]="{'visible opacity-100': tituloChatVisivel, 'invisible opacity-0': !tituloChatVisivel}">
+                <input type="text" [formControl]="novaConversaFormControl"
+                    [ngClass]="{'border-red-600 focus:border-red-600': submitted && novaConversaFormControl.errors}"
+                    class="shadow-md rounded-full py-1 px-3 placeholder-gray-400 w-full focus:outline-none focus:ring-0"
+                    placeholder="Título da conversa" />
+                <button class="bg-blue-uai py-1 px-3 rounded-full text-white mt-3" (click)="criarChat()">
+                    Iniciar
+                </button>
+            </div>
+        </div>
+        <div class="mb-6">
+            <h4 class="text-2xl font-semibold text-blue-uai">Recentes</h4>
+        </div>
+
+        <div class="flex justify-end items-center relative">
+            <input placeholder="Pesquisar" class="border shadow-md rounded-full py-1 px-4 w-full placeholder-gray-400"
+                [formControl]="pesquisaFormControl" />
+            <div class="absolute bg-blue-uai p-1.5 rounded-full mr-1">
+                <img src="../../../assets/imgs/mystery.svg" class=" w-4 h-4 " alt="Icone de lupa" />
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <div class="overflow-y-auto overflow-scrollbar-hidden mt-3 flex flex-col gap-1">
+        <div class="px-6" *ngFor="let topico of topicosFiltrados" (click)="selecionarChat(topico)">
+            <div class="grid grid-cols-6 items-center rounded-xl p-3 transition-colors duration-300 hover:bg-blue-uai-10 cursor-pointer"
+                [ngClass]="{'bg-blue-uai-10': topico.id === idChatSelecionado}">
+                <div class="mr-3 min-w-4 min-h-4 col-span-1">
+                    <img src="../../../assets/imgs/chat_bubble.svg" alt="Icone de chat" />
+                </div>
+                <span class="font-semibold overflow-hidden whitespace-nowrap text-ellipsis col-span-5">{{ topico.titulo
+                    }}</span>
+                <!-- <div class="bg-blue-uai-70 p-1.5 rounded-full ml-6">
+                    <img src="../../../assets/imgs/close.svg" class=" w-2 h-2" alt="Icone de fechar" />
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
