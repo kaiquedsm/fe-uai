@@ -13,6 +13,9 @@ export class ChatSidebarComponent implements OnInit, OnChanges {
   @Input()
   topicos: Chat[] = [];
 
+  @Input()
+  idChatSelecionado?: number | undefined
+
   @Output()
   onChatSelecionado: EventEmitter<Chat> = new EventEmitter();
 
@@ -37,7 +40,7 @@ export class ChatSidebarComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.pesquisaFormControl.valueChanges.subscribe({
       next: (value: string) => {
-        if(value) {
+        if (value) {
           this.topicosFiltrados = this.topicos.filter(t => t.titulo!.toLowerCase().trim().includes(value.toLowerCase().trim()));
         } else {
           this.topicosFiltrados = [...this.topicos];
@@ -51,11 +54,13 @@ export class ChatSidebarComponent implements OnInit, OnChanges {
   }
 
   criarChat() {
-    if(this.novaConversaFormControl.valid) {
+    if (this.novaConversaFormControl.valid) {
       const chat: Chat = {
         titulo: this.novaConversaFormControl.value
       };
       this.onTituloCriado.emit(chat);
+      this.tituloChatVisivel = false;
+      this.novaConversaFormControl.reset();
     }
   }
 

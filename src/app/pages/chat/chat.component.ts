@@ -76,11 +76,9 @@ export class ChatComponent implements OnInit {
       .subscribe({
         next: (response) => {
 
-          this.mensagens = [];
+          this.carregarMeusChats();
 
           const urlArr = response.headers.get('Location')?.split('/');
-
-          console.log(urlArr);
 
           const newChatId = Number(urlArr?.pop());
 
@@ -90,7 +88,8 @@ export class ChatComponent implements OnInit {
 
           this.webSocketService.connect(newChatId);
 
-          this.carregarMeusChats();
+          this.mensagens = [];
+
         }
       })
   }
@@ -102,6 +101,7 @@ export class ChatComponent implements OnInit {
     this.chatService.carregarMensagens(chat.id!).subscribe({
       next: (response) => {
         this.mensagens = response.body;
+        this.sidebarHabilitada = false;
         setTimeout(() => {
           this.chatbox.nativeElement.scrollTop = this.chatbox.nativeElement.scrollHeight;
         }, 200)

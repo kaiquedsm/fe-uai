@@ -1,4 +1,4 @@
-<div class="h-screen">
+<div class="h-screen flex flex-col">
     <div class="flex justify-start flex-col p-6">
         <div class="mb-12">
             <button class="flex gap-4 justify-center rounded-full items-center shadow-md" (click)="tituloChatVisivel = !tituloChatVisivel">
@@ -31,10 +31,11 @@
     </div>
 
     <hr>
-    <div class="overflow-y-auto h-[50%] overflow-scrollbar-hidden mt-3">
+    <div class="overflow-y-auto overflow-scrollbar-hidden mt-3 flex flex-col gap-1">
         <div class="px-6" *ngFor="let topico of topicosFiltrados" (click)="selecionarChat(topico)">
             <div
-                class="flex items-center rounded-xl p-3 transition-colors duration-300 hover:bg-blue-uai-10 cursor-pointer">
+                class="flex items-center rounded-xl p-3 transition-colors duration-300 hover:bg-blue-uai-10 cursor-pointer"
+                [ngClass]="{'bg-blue-uai-10': topico.id === idChatSelecionado}">
                 <div class="mr-3">
                     <img src="../../../assets/imgs/chat_bubble.svg" class="w-4 h-4" alt="Icone de chat" />
                 </div>
