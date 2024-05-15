@@ -20,6 +20,12 @@
                         (click)="sidebarHabilitada = true"></fa-icon>
                 </div>
 
+                <div class="hidden lg:block">
+                    <p class="font-semibold">
+                        {{ chatSelecionado?.titulo?.toUpperCase() }}
+                    </p>
+                </div>
+
                 <div class="flex justify-between items-center">
                     <span class="font-semibold mr-3">{{nomeUsuario}}</span>
                     <div class="flex justify-center rounded-full bg-purple-uai-50 p-3 w-12 h-12">

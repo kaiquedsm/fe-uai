@@ -81,11 +81,14 @@ export class ChatComponent implements OnInit {
     })
   }
 
-  carregarMeusChats() {
+  carregarMeusChats(newChatId?: number) {
     this.chatService.meusChats().subscribe({
       next: (response) => {
         this.topicos = response.body
           .filter(c => c.idNecessidade === this.idNecessidadeSelecionada);
+        if(newChatId) {
+          this.chatSelecionado = this.topicos.find(t => t.id === newChatId);
+        }
       }
     });
   }
@@ -95,15 +98,11 @@ export class ChatComponent implements OnInit {
       .subscribe({
         next: (response) => {
 
-          this.carregarMeusChats();
-
           const urlArr = response.headers.get('Location')?.split('/');
 
           const newChatId = Number(urlArr?.pop());
 
-          this.chatSelecionado = {
-            id: newChatId
-          };
+          this.carregarMeusChats(newChatId);
 
           this.webSocketService.connect(newChatId);
 
