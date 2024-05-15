@@ -1,14 +1,14 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { faBars, faClose } from '@fortawesome/free-solid-svg-icons';
+import { Subject, debounceTime } from 'rxjs';
 import { Chat } from 'src/app/core/models/chat.models';
 import { Mensagem } from 'src/app/core/models/mensagem.models';
 import { ChatService } from 'src/app/core/services/chat.service';
 import { NecessidadeService } from 'src/app/core/services/necessidade.service';
 import { UserService } from 'src/app/core/services/user.service';
 import { WebsocketService } from 'src/app/core/services/websocket.service';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
-import { faClose } from '@fortawesome/free-solid-svg-icons';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-chat',
@@ -33,6 +33,8 @@ export class ChatComponent implements OnInit {
 
   mensagemFormControl: FormControl = new FormControl('', Validators.required);
 
+  private mensagemEnviada = new Subject<string>();
+
   constructor(
     private necessidadeService: NecessidadeService,
     private chatService: ChatService,
@@ -43,6 +45,23 @@ export class ChatComponent implements OnInit {
 
   ngOnInit(): void {
     this.nomeUsuario = this.userService.dadosLogin.getValue()?.body?.usuarioLogado;
+
+    const mensagemEnviadaDebounce = this.mensagemEnviada.pipe(debounceTime(200));
+
+    mensagemEnviadaDebounce.subscribe({
+      next: (value) => {
+        this.webSocketService.enviarMensagem({
+          idChat: this.chatSelecionado!.id!,
+          texto: value,
+          origemMensagem: 'USUARIO_ABERTURA'
+        }).subscribe({
+          complete: () => {
+            this.mensagemFormControl.setValue('');
+          }
+        });
+      }
+    })
+
     this.activeRoute.params.subscribe({
       next: (params) => {
         this.idNecessidadeSelecionada = Number(params['idNecessidade']);
@@ -111,15 +130,7 @@ export class ChatComponent implements OnInit {
 
   enviarMensagem() {
     if (this.mensagemFormControl.valid) {
-      this.webSocketService.enviarMensagem({
-        idChat: this.chatSelecionado!.id!,
-        texto: this.mensagemFormControl.value,
-        origemMensagem: 'USUARIO_ABERTURA'
-      }).subscribe({
-        complete: () => {
-          this.mensagemFormControl.setValue('');
-        }
-      });
+      this.mensagemEnviada.next(this.mensagemFormControl.value);
     }
   }
 

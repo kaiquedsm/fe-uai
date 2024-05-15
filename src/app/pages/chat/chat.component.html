@@ -74,8 +74,8 @@
                 <div class="w-full flex items-center pb-3">
                     <input placeholder="Digite uma pergunta para o uAI" [formControl]="mensagemFormControl"
                         class="border shadow-md rounded-full py-3 px-4 w-full placeholder-gray-400"
-                        (keyup.enter)="enviarMensagem()" />
-                    <div class="absolute right-3 bg-blue-uai p-3 rounded-full mr-1.5 cursor-pointer" (click)="enviarMensagem()">
+                        (keyup.enter)="btnEnviarMensagem.click()" />
+                    <div class="absolute right-3 bg-blue-uai p-3 rounded-full mr-1.5 cursor-pointer" #btnEnviarMensagem (click)="enviarMensagem()">
                         <img src="../../../assets/imgs/send.svg" class=" w-4 h-4 " alt="Icone de lupa" />
                     </div>
                 </div>
