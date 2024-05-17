@@ -16,10 +16,10 @@
                 <img [src]="image" alt="Slide {{ i + 1 }}" class="h-full w-full object-cover">
             </div>
         </div>
-
-        <div class="absolute w-full h-full flex flex-col justify-between z-10 px-10 py-24 sm:w-1/2 sm:justify-center menu-car-1:py-24">
+      
+        <div id="landind-infos" class="absolute w-full h-full flex flex-col justify-between z-10 px-10 py-24 sm:w-1/2 sm:py-16 sm:justify-center screen-car-1:py-24">
             <div class="my-4">
-                <h1 class="text-7xl">
+                <h1 class="text-5xl sm:text-7xl">
                     A <span class="font-bold">tecnologia</span> que te <span class="font-bold">entende</span>!
                 </h1>
             </div>
@@ -30,9 +30,9 @@
                     minus dolore at, totam laudantium.
                 </p>
             </div>
-            <div class="flex flex-col w-1/2 mx-auto pt-6 space-y-6 font-semibold sm:flex-row sm:w-full sm:space-y-0">
-                <button class="bg-white-uai text-blue-uai py-2 px-5 rounded-md mr-5 sm:px-6">Começar</button>
-                <button [routerLink]="['/login-cadastro']">Fazer login</button>
+            <div class="flex flex-col w-1/2 mx-auto mt-4 space-y-6 font-semibold sm:flex-row sm:w-full sm:space-y-0 sm:gap-4">
+                <button class="bg-white-uai mx-auto text-blue-uai py-2 px-5 rounded-md sm:px-6 sm:m-0">Começar</button>
+                <button>Fazer login</button>
             </div>
         </div>
     </div>
@@ -41,28 +41,28 @@
 
     <section class="mt-24 flex justify-center w-full">
         <div class="w-3/4 sm:grid md:grid-cols-2 2xl:grid-cols-4 sm:m-0">
-            <div class="sm:w-2/3 m-6 mx-auto p-2 rounded-3xl shadow-2xl">
+            <div class="sm:w-2/3 m-6 mx-auto p-2 rounded-3xl shadow-lg">
                 <img src="../../../assets/imgs/practicality.svg" alt="">
                 <div class="pl-6 pb-4">
                     <h3>Praticidade</h3>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus doloribus aut eum.</p>
                 </div>
             </div>
-            <div class="sm:w-2/3 m-6 mx-auto p-2 rounded-3xl shadow-2xl">
+            <div class="sm:w-2/3 m-6 mx-auto p-2 rounded-3xl shadow-lg">
                 <img src="../../../assets/imgs/acessibility.svg" alt="">
                 <div class="pl-6 pb-4">
                     <h3>Acessibilidade</h3>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus doloribus aut eum.</p>
                 </div>
             </div>
-            <div class="sm:w-2/3 m-6 mx-auto p-2 rounded-3xl shadow-2xl">
+            <div class="sm:w-2/3 m-6 mx-auto p-2 rounded-3xl shadow-lg">
                 <img src="../../../assets/imgs/knowledge.svg" alt="">
                 <div class="pl-6 pb-4">
                     <h3>Conhecimento</h3>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus doloribus aut eum.</p>
                 </div>
             </div>
-            <div class="sm:w-2/3 m-6 mx-auto p-2 rounded-3xl shadow-2xl">
+            <div class="sm:w-2/3 m-6 mx-auto p-2 rounded-3xl shadow-lg">
                 <img src="../../../assets/imgs/efficiency.svg" alt="">
                 <div class="pl-6 pb-4">
                     <h3>Eficiência</h3>
@@ -284,7 +284,7 @@
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate harum similique quis?</p>
                 <div class="space-x-4">
                     <i class="fa-brands fa-facebook text-blue-uai bg-white-uai rounded-full text-3xl"></i>
-                    <i class="fa-brands fa-instagram bg-blue-uai text-white text-3xl"></i>
+                    <i class="fa-brands fa-instagram bg-blue-uai text-white rounded-lg text-3xl"></i>
                 </div>
             </div>
             <div class="mt-4 sm:ml-auto">
