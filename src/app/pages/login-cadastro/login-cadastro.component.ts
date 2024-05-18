@@ -79,14 +79,24 @@ export class LoginCadastroComponent implements OnInit {
 
   cadastrar() {
     this.enviadoCadastro = true;
-    if(this.cadastroForm.valid) {
-      this.userService.cadastrarCasual({...this.cadastroForm.value}).subscribe({
+    if (this.cadastroForm.valid) {
+      this.userService.cadastrarCasual({ ...this.cadastroForm.value }).subscribe({
         next: _ => {
           this.cpfFormControl.patchValue(this.cadastroForm.get('cpf')!.value);
           this.senhaFormControl.patchValue(this.cadastroForm.get('senha')!.value);
           this.cadastro = false;
         }
       })
+    }
+  }
+
+  moveScroll() {
+    if (window.innerWidth < 1000) {
+      if (this.cadastro) {
+        document.getElementById('container')!.scrollTop = document.getElementById('container')!.scrollHeight / 1.8;
+      } else {
+        document.getElementById('container')!.scrollTop = 0;
+      }
     }
   }
 
