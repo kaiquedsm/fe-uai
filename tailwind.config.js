@@ -23,6 +23,9 @@ module.exports = {
       },
       gridTemplateRows: {
         'landing': 'auto 1fr'
+      },
+      screens: {
+        'screen-car-1': '521px'
       }
     },
   },
