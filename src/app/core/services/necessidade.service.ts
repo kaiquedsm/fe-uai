@@ -19,9 +19,14 @@ export class NecessidadeService {
 
   // Provisório
   listarNecessidade() {
-    return this.http.get<{body: Necessidade[]}>(`${environment.target}/necessidade`).pipe(map(response => {
-      return response.body[0];
+    return this.http.get<{ body: Necessidade[] }>(`${environment.target}/necessidade`).pipe(map(response => {
+      const moduloEducacao = response.body.filter((mod: Necessidade) => mod.id === 1)[0];
+      return moduloEducacao;
     }));
+  }
+
+  listarNecessidades() {
+    return this.http.get(`${environment.target}/necessidade`);
   }
 
 }
