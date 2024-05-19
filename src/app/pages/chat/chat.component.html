@@ -1,7 +1,7 @@
 <main class="grid grid-flow-row-dense grid-cols-5 h-screen">
     <section
         class="col-span-5 block absolute -translate-x-[200%] z-10 min-w-[90vw] bg-white transition-transform ease-in-out duration-500 rounded-lg h-full lg:col-span-1 lg:block lg:relative lg:-translate-x-0 lg:min-w-0"
-        [ngClass]="{'-translate-x-0': sidebarHabilitada}">
+        [ngClass]="{'translate-x-0': sidebarHabilitada}">
         <div
             class="lg:hidden absolute top-4 right-[-1.25rem] bg-blue-uai rounded-full w-10 h-10 flex flex-col items-center justify-center">
             <fa-icon [icon]="close" class="text-xl text-white" (click)="sidebarHabilitada = false"></fa-icon>
