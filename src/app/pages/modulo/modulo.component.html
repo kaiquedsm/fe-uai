@@ -43,7 +43,7 @@
             <div class="min-w-[17rem] flex justify-center items-center bg-gray-gradient p-6 rounded-3xl">
                 <div class="flex flex-col justify-center items-center text-center gap-y-4">
                     <img src="../../../assets/imgs/lock.svg" class="h-8 w-8" alt="icon de cadeado" />
-                    <h3 class="text-2xl font-bold mb-2">Módulo 2</h3>
+                    <h3 class="text-2xl font-bold mb-2">Módulo 3</h3>
                     <p class="text-xl font-bold">Módulo disponível em <br> breve</p>
                 </div>
             </div>
@@ -51,7 +51,7 @@
             <div class="min-w-[17rem] flex justify-center items-center bg-gray-gradient p-6 rounded-3xl">
                 <div class="flex flex-col justify-center items-center text-center gap-y-4">
                     <img src="../../../assets/imgs/lock.svg" class="h-8 w-8" alt="icon de cadeado" />
-                    <h3 class="text-2xl font-bold mb-2">Módulo 2</h3>
+                    <h3 class="text-2xl font-bold mb-2">Módulo 4</h3>
                     <p class="text-xl font-bold">Módulo disponível em <br> breve</p>
                 </div>
             </div>
@@ -59,7 +59,7 @@
             <div class="min-w-[17rem] flex justify-center items-center bg-gray-gradient p-6 rounded-3xl">
                 <div class="flex flex-col justify-center items-center text-center gap-y-4">
                     <img src="../../../assets/imgs/lock.svg" class="h-8 w-8" alt="icon de cadeado" />
-                    <h3 class="text-2xl font-bold mb-2">Módulo 2</h3>
+                    <h3 class="text-2xl font-bold mb-2">Módulo 5</h3>
                     <p class="text-xl font-bold">Módulo disponível em <br> breve</p>
                 </div>
             </div>
@@ -67,7 +67,7 @@
             <div class="min-w-[17rem] flex justify-center items-center bg-gray-gradient p-6 rounded-3xl">
                 <div class="flex flex-col justify-center items-center text-center gap-y-4">
                     <img src="../../../assets/imgs/lock.svg" class="h-8 w-8" alt="icon de cadeado" />
-                    <h3 class="text-2xl font-bold mb-2">Módulo 2</h3>
+                    <h3 class="text-2xl font-bold mb-2">Módulo 6</h3>
                     <p class="text-xl font-bold">Módulo disponível em <br> breve</p>
                 </div>
             </div>
@@ -92,7 +92,8 @@
         <div class="flex flex-col gap-y-3 py-6 w-full lg:max-w-[90%] max-h-[350px] overflow-y-scroll overflow-scrollbar-hidden">
             <div 
                 *ngFor="let chat of chatsRecentesFiltrados"
-                class="flex items-center rounded-xl p-3 transition-colors duration-300 relative bg-blue-uai hover:bg-blue-uai-ho-35 cursor-pointer">
+                class="flex items-center rounded-xl p-3 transition-colors duration-300 relative bg-blue-uai hover:bg-blue-uai-ho-35 cursor-pointer"
+                [routerLink]="['/chat/necessidade/' + chat.idNecessidade]" [queryParams]="{newChatId: chat.id}">
                 <div class="absolute inset-0 bg-white-uai opacity-15 rounded-xl"></div>
                 <div class="grid grid-cols-12 lg:flex justify-start items-center overflow-hidden gap-2">
                     <div class="col-span-1">
