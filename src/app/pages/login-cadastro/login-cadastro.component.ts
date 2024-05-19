@@ -10,7 +10,7 @@ import { UserService } from 'src/app/core/services/user.service';
   templateUrl: './login-cadastro.component.html',
   styleUrls: ['./login-cadastro.component.scss']
 })
-export class LoginCadastroComponent implements OnInit, OnDestroy {
+export class LoginCadastroComponent implements OnInit {
 
   /**
    * Campos login
@@ -35,10 +35,6 @@ export class LoginCadastroComponent implements OnInit, OnDestroy {
 
   constructor(private userService: UserService, private loadingService: LoadingService, private router: Router) {
 
-  }
-
-  ngOnDestroy(): void {
-    this.loadingService.loadingSub.unsubscribe();
   }
 
   ngOnInit(): void {

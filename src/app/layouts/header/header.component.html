@@ -3,13 +3,14 @@
         <fa-icon [icon]="faBars" class="p-10 text-xl"></fa-icon>
     </div>
     <div class="h-full"><img src="../assets/imgs/projeto-marketing.JPG" alt="uAi" class="h-full"></div>
-    <div class="hidden sm:block">
-        <button class="p-2">Início</button>
-        <button class="p-2">Sobre nós</button>
-        <button class="p-2">Contato</button>
+    <div class="hidden sm:flex gap-10">
+        <button [routerLink]="['/']">Início</button>
+        <button [routerLink]="['/modulo']" *ngIf="loggedIn">Módulos</button>
+        <button>Sobre nós</button>
+        <button>Contato</button>
     </div>
     <div>
         <button class="hidden sm:block p-1 px-4 mr-10 border-white-uai border-solid border rounded-md"
-            (click)="loginCadastro()">Entrar</button>
+            (click)="loginCadastro()">{{ loggedIn ? 'Sair' : 'Entrar' }}</button>
     </div>
 </header>

@@ -41,4 +41,9 @@ export class UserService {
     return this.http.post(`${environment.target}/casual`, usuario);
   }
 
+  logout() {
+    this.dadosLogin.next({} as RespostaLogin);
+    localStorage.clear();
+  }
+
 }

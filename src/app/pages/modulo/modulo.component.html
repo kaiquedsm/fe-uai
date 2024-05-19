@@ -1,5 +1,5 @@
 <app-header></app-header>
-<main>
+<main *ngIf="!isLoading; else loadingTemplate">
     <section class="relative">
         <img src="../../../assets/imgs/module-bg.png" class="w-full hidden sm:block" alt="Background Image" />
         <img src="../../../assets/imgs/module-bg-sm.png" class="w-full block sm:hidden" alt="Background Image Mobile" />
@@ -18,15 +18,15 @@
         </div>
 
         <div
-            class="flex sm:grid sm:w-auto overflow-x-auto overflow-scrollbar-hidden sm:overflow-x-hidden sm:auto-rows-fr grid-cols-3 gap-7 w-[20rem]">
+            class="flex sm:grid sm:w-auto overflow-x-auto overflow-scrollbar-hidden sm:overflow-x-hidden sm:auto-rows-fr grid-cols-3 gap-7 w-[20rem] cursor-pointer"
+            routerLink="/chat/necessidade/{{moduloEducacao.id}}">
 
             <div class="min-w-[17rem] p-6 rounded-3xl bg-blue-uai flex items-center flex-col">
                 <div class="flex justify-center w-fit rounded-xl bg-white-uai p-3 mb-6">
                     <img src="../../../assets/imgs/book_4.svg" class="h-4 w-4 sm:h-8 sm:w-8" alt="icon de livro" />
                 </div>
 
-                <div class="text-white-uai flex items-center flex-col cursor-pointer"
-                    routerLink="/chat/necessidade/{{moduloEducacao.id}}">
+                <div class="text-white-uai flex items-center flex-col">
                     <h3 class="text-xl sm:text-2xl font-bold mb-2">{{moduloEducacao.nome}}</h3>
                     <p class="text-center">{{moduloEducacao.descricao}}</p>
                 </div>
@@ -81,48 +81,35 @@
     <section class="flex flex-col items-center px-16 bg-blue-uai">
         <div class="w-full sm:w-4/5 flex justify-end items-center relative">
             <input placeholder="Pesquisar"
+            [formControl]="pesquisaChatFormControl"
+            type="text"
                 class="border shadow-md rounded-full py-3 px-4 w-full placeholder-gray-400 text-xl relative bottom-7" />
             <div class="absolute bg-blue-uai p-3 rounded-full mr-1.5 cursor-pointer bottom-[34px]">
                 <img src="../../../assets/imgs/mystery.svg" class=" w-4 h-4 " alt="Icone de lupa" />
             </div>
         </div>
 
-        <div class="flex flex-col gap-y-3 py-6 w-full">
-            <div
-                class="flex justify-center items-center rounded-xl p-3 transition-colors duration-300 relative bg-blue-uai hover:bg-blue-uai-ho-35 cursor-pointer">
+        <div class="flex flex-col gap-y-3 py-6 w-full lg:max-w-[90%] max-h-[350px] overflow-y-scroll overflow-scrollbar-hidden">
+            <div 
+                *ngFor="let chat of chatsRecentesFiltrados"
+                class="flex items-center rounded-xl p-3 transition-colors duration-300 relative bg-blue-uai hover:bg-blue-uai-ho-35 cursor-pointer">
                 <div class="absolute inset-0 bg-white-uai opacity-15 rounded-xl"></div>
-                <div class="flex justify-start items-center">
-                    <div class="mr-3">
-                        <img src="../../../assets/imgs/chat_bubble_white.svg" class="w-4 h-4 text-white-uai"
+                <div class="grid grid-cols-12 lg:flex justify-start items-center overflow-hidden gap-2">
+                    <div class="col-span-1">
+                        <img src="../../../assets/imgs/chat_bubble_white.svg" class="text-white-uai lg:h-4 lg:w-4"
                             alt="Icone de chat" />
                     </div>
-                    <span class="font-semibold text-white-uai">Nome da conversa...</span>
-                </div>
-            </div>
-
-            <div
-                class="flex justify-center items-center rounded-xl p-3 transition-colors duration-300 relative bg-blue-uai hover:bg-blue-uai-ho-35 cursor-pointer">
-                <div class="absolute inset-0 bg-white-uai opacity-15 rounded-xl"></div>
-                <div class="flex justify-start items-center">
-                    <div class="mr-3">
-                        <img src="../../../assets/imgs/chat_bubble_white.svg" class="w-4 h-4 text-white-uai"
-                            alt="Icone de chat" />
-                    </div>
-                    <span class="font-semibold text-white-uai">Nome da conversa...</span>
-                </div>
-            </div>
-            <div
-                class="flex justify-center items-center rounded-xl p-3 transition-colors duration-300 relative bg-blue-uai hover:bg-blue-uai-ho-35 cursor-pointer">
-                <div class="absolute inset-0 bg-white-uai opacity-15 rounded-xl"></div>
-                <div class="flex justify-start items-center">
-                    <div class="mr-3">
-                        <img src="../../../assets/imgs/chat_bubble_white.svg" class="w-4 h-4 text-white-uai"
-                            alt="Icone de chat" />
-                    </div>
-                    <span class="font-semibold text-white-uai">Nome da conversa...</span>
+                    <span class="font-semibold text-white-uai overflow-hidden whitespace-nowrap text-ellipsis col-span-11">{{ chat.titulo }}</span>
                 </div>
             </div>
         </div>
     </section>
 </main>
+
+<ng-template #loadingTemplate>
+    <div class="h-screen overflow-hidden flex items-center justify-center">
+        <app-loading></app-loading>
+    </div>
+</ng-template>
+
 <app-footer></app-footer>

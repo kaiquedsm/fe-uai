@@ -16,7 +16,7 @@ import { WebsocketService } from 'src/app/core/services/websocket.service';
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss']
 })
-export class ChatComponent implements OnInit, OnDestroy {
+export class ChatComponent implements OnInit {
 
   @ViewChild('chatbox') chatbox!: ElementRef<any>;
 
@@ -47,10 +47,6 @@ export class ChatComponent implements OnInit, OnDestroy {
     private userService: UserService,
     private activeRoute: ActivatedRoute
   ) { }
-
-  ngOnDestroy(): void {
-      this.loadingService.loadingSub.unsubscribe();
-  }
 
   ngOnInit(): void {
     
