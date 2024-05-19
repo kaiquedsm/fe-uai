@@ -1,6 +1,8 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { delay } from 'rxjs';
+import { LoadingService } from 'src/app/core/services/loading.service';
 import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
@@ -8,7 +10,7 @@ import { UserService } from 'src/app/core/services/user.service';
   templateUrl: './login-cadastro.component.html',
   styleUrls: ['./login-cadastro.component.scss']
 })
-export class LoginCadastroComponent implements OnInit {
+export class LoginCadastroComponent implements OnInit, OnDestroy {
 
   /**
    * Campos login
@@ -29,9 +31,22 @@ export class LoginCadastroComponent implements OnInit {
   cadastro: boolean = false;
   mostrarSenha: boolean = false;
 
-  constructor(private userService: UserService, private router: Router) { }
+  isLoading: boolean = false;
+
+  constructor(private userService: UserService, private loadingService: LoadingService, private router: Router) {
+
+  }
+
+  ngOnDestroy(): void {
+    this.loadingService.loadingSub.unsubscribe();
+  }
 
   ngOnInit(): void {
+
+    this.loadingService.loadingSub.pipe(delay(0))
+      .subscribe((loading) => {
+        this.isLoading = loading;
+      });
 
     this.cadastroForm = this.formBuilder.group({
       nomeCompleto: [null, Validators.required],

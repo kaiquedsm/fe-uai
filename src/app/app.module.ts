@@ -18,11 +18,12 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginCadastroComponent } from './pages/login-cadastro/login-cadastro.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChatComponent } from './pages/chat/chat.component';
-import { RequestInterceptor } from './core/services/request-interceptor';
+import { RequestInterceptor } from './interceptors/request-interceptor';
 import { ModuloComponent } from './pages/modulo/modulo.component';
 import { ChatSidebarComponent } from './components/chat-sidebar/chat-sidebar.component';
 
 import player from 'lottie-web';
+import { LoadingInterceptor } from './interceptors/loading-interceptor';
 
 export function playerFactory() {
   return player;
@@ -54,7 +55,7 @@ export function playerFactory() {
     LottieComponent,
     LottieDirective
   ],
-  providers: [HttpClient, { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true }],
+  providers: [HttpClient, { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true }, {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

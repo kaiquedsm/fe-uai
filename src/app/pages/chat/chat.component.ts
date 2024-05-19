@@ -1,11 +1,12 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { faBars, faClose } from '@fortawesome/free-solid-svg-icons';
-import { Subject, debounceTime } from 'rxjs';
+import { Subject, debounceTime, delay } from 'rxjs';
 import { Chat } from 'src/app/core/models/chat.models';
 import { Mensagem } from 'src/app/core/models/mensagem.models';
 import { ChatService } from 'src/app/core/services/chat.service';
+import { LoadingService } from 'src/app/core/services/loading.service';
 import { NecessidadeService } from 'src/app/core/services/necessidade.service';
 import { UserService } from 'src/app/core/services/user.service';
 import { WebsocketService } from 'src/app/core/services/websocket.service';
@@ -15,7 +16,7 @@ import { WebsocketService } from 'src/app/core/services/websocket.service';
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss']
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent implements OnInit, OnDestroy {
 
   @ViewChild('chatbox') chatbox!: ElementRef<any>;
 
@@ -35,18 +36,30 @@ export class ChatComponent implements OnInit {
 
   submitted: boolean = false;
 
+  isLoading: boolean = false;
+
   private mensagemEnviada = new Subject<string>();
 
   constructor(
-    private necessidadeService: NecessidadeService,
+    private loadingService: LoadingService,
     private chatService: ChatService,
     private webSocketService: WebsocketService,
     private userService: UserService,
     private activeRoute: ActivatedRoute
   ) { }
 
+  ngOnDestroy(): void {
+      this.loadingService.loadingSub.unsubscribe();
+  }
+
   ngOnInit(): void {
+    
     this.nomeUsuario = this.userService.dadosLogin.getValue()?.body?.usuarioLogado;
+
+    this.loadingService.loadingSub.pipe(delay(0))
+      .subscribe((loading) => {
+        this.isLoading = loading;
+      })
 
     const mensagemEnviadaDebounce = this.mensagemEnviada.pipe(debounceTime(200));
 
