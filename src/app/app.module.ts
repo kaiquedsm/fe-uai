@@ -14,6 +14,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginCadastroComponent } from './pages/login-cadastro/login-cadastro.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+
 @NgModule({
   declarations: [
     AppComponent,

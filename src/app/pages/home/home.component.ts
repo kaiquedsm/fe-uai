@@ -1,5 +1,6 @@
 import { NgIfContext } from '@angular/common';
 import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Router } from '@angular/router';
 import { initFlowbite } from 'flowbite';
 
 @Component({
@@ -9,59 +10,63 @@ import { initFlowbite } from 'flowbite';
 })
 
 export class HomeComponent implements OnInit {
-  
+
   number_img_carousel: number = 1;
   screen_width: number = window.innerWidth
-  elseDiv!: TemplateRef<NgIfContext<boolean>>|null;  
-  images_1: string[] = ['../../../assets/imgs/carousel_1/1/1.png', '../../../assets/imgs/carousel_1/1/2.png', '../../../assets/imgs/carousel_1/1/3.png', '../../../assets/imgs/carousel_1/1/4.png',]; 
-  images_2: string[] = ['../../../assets/imgs/carousel_1/2/1.png', '../../../assets/imgs/carousel_1/2/2.png', '../../../assets/imgs/carousel_1/2/3.png', '../../../assets/imgs/carousel_1/2/4.png',]; 
+  elseDiv!: TemplateRef<NgIfContext<boolean>> | null;
+  images_1: string[] = ['../../../assets/imgs/carousel_1/1/1.png', '../../../assets/imgs/carousel_1/1/2.png', '../../../assets/imgs/carousel_1/1/3.png', '../../../assets/imgs/carousel_1/1/4.png',];
+  images_2: string[] = ['../../../assets/imgs/carousel_1/2/1.png', '../../../assets/imgs/carousel_1/2/2.png', '../../../assets/imgs/carousel_1/2/3.png', '../../../assets/imgs/carousel_1/2/4.png',];
   image_op: string[] = [];
   currentIndex: number = 0;
   isDesktop: boolean = true;
-  
-  constructor() { }
+
+  constructor(private router: Router) { }
+
+  loginForm() {
+    this.router.navigate(['/login-cadastro']);
+  }
 
   ngOnInit(): void {
-    
+
     // this.startCarousel();
-    
-   window.addEventListener('resize', () => {
+
+    window.addEventListener('resize', () => {
       this.screen_width = window.innerWidth;
       console.log(this.screen_width);
-      
-      if(this.screen_width >= 640) {
+
+      if (this.screen_width >= 640) {
         return this.isDesktop = true
       } else {
         return this.isDesktop = false
       }
-   });
-   
-   if(this.screen_width >= 640) {
-    this.image_op = this.images_1
-   } else {
-    this.image_op = this.images_2
-   }
-    
-    setInterval(() => { 
+    });
+
+    if (this.screen_width >= 640) {
+      this.image_op = this.images_1
+    } else {
+      this.image_op = this.images_2
+    }
+
+    setInterval(() => {
       this.currentIndex = (this.currentIndex + 1) % this.image_op.length;
     }, 5000);
-    
+
     setInterval(() => {
-      if(this.number_img_carousel === 4) {
+      if (this.number_img_carousel === 4) {
         this.number_img_carousel = 1
         return
       }
       this.number_img_carousel++
       console.log(this.screen_width);
-      
+
     }, 5000)
 
     initFlowbite();
-    
+
   }
-  
+
   startCarousel(): void {
-     // Alterar a imagem a cada 3 segundos (3000 milissegundos)  
+    // Alterar a imagem a cada 3 segundos (3000 milissegundos)  
   }
 
 }
