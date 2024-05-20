@@ -65,8 +65,10 @@ export class ChatComponent implements OnInit {
           texto: value,
           origemMensagem: 'USUARIO_ABERTURA'
         }).subscribe({
-          complete: () => {
+          next: _ => {
             this.mensagemFormControl.setValue('');
+          },
+          complete: () => {
             this.submitted = false;
           }
         });
@@ -98,7 +100,7 @@ export class ChatComponent implements OnInit {
 
     this.webSocketService.mensagemRespostaSubject.subscribe({
       next: (resposta) => {
-        if (resposta.texto) {
+        if (resposta.texto && this.mensagens.find(m => m.id == resposta.id) === undefined) {
           this.mensagens.push(resposta);
           setTimeout(() => {
             this.chatbox.nativeElement.scrollTop = this.chatbox.nativeElement.scrollHeight;
