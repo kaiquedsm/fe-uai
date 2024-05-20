@@ -89,8 +89,8 @@ export class ChatComponent implements OnInit {
 
         if(isParams(query)) {
           const chatId = Number((query as Params)['newChatId']);
-          this.webSocketService.connect(chatId);
           this.carregarMeusChats(chatId);
+          this.carregarMensagens({id: chatId});
         } else {
           this.carregarMeusChats();
         }
