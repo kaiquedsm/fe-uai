@@ -96,6 +96,7 @@ export class LoginCadastroComponent implements OnInit {
           this.cpfFormControl.patchValue(this.cadastroForm.get('cpf')!.value);
           this.senhaFormControl.patchValue(this.cadastroForm.get('senha')!.value);
           this.cadastro = false;
+          this.moveScroll();
         }
       })
     }
