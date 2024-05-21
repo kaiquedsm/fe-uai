@@ -8,7 +8,7 @@
         </header>
         <div class="lg:self-center flex items-center justify-center mt-6">
             <button class="lg:px-5 border border-white rounded-md py-2 px-10 text-xl text-white"
-                (click)="cadastro = !cadastro; moveScroll()">Fazer cadastro</button>
+                (click)="cadastro = true; moveScroll()">Fazer cadastro</button>
         </div>
         <div class="hidden lg:block lg:mt-6 lg:shadow-black lg:drop-shadow-2xl">
             <img class="" src="../../../assets/imgs/login-cadastro/imagem-mockup-uAI2.png"
@@ -25,22 +25,15 @@
 
         <form class="lg:mt-20 w-full mt-8">
             <div class="w-full px-10">
-                <input type="text" id="" class="rounded-full w-full bg-zinc-200 border border-zinc-300 px-5"
-                    placeholder="CPF" [formControl]="cpfFormControl" required (input)="formatCPF($event)"
-                    maxlength="14">
-                <div
-                    *ngIf="cpfFormControl.get('cpfFormControl')?.invalid && (cpfFormControl.get('cpfFormControl')?.dirty || cpfFormControl.get('cpfFormControl')?.touched)">
-                    <div *ngIf="cpfFormControl.get('cpfFormControl')?.errors?.['required']" class="text-xs color-red">
-                        Campo
-                        obrigatório.</div>
-                    <div *ngIf="cpfFormControl.get('cpfFormControl')?.errors?.['invalidCpf']" class="format-req">CPF
-                        inválido.
-                    </div>
-                </div>
+                <input type="text"
+                    [class.errors]="cpfFormControl.invalid && (cpfFormControl.dirty || cpfFormControl.touched)"
+                    mask="000.000.000-00" class="rounded-full w-full bg-zinc-200 border border-zinc-300 px-5"
+                    [dropSpecialCharacters]="false" placeholder="CPF *" [formControl]="cpfFormControl" required>
             </div>
             <div class="w-full px-10 mt-6 relative">
                 <input [type]="mostrarSenha ? 'text' : 'password'"
-                    class="rounded-full w-full bg-zinc-200 border border-zinc-300 px-5" placeholder="Senha"
+                    [class.errors]="senhaFormControl.invalid && (senhaFormControl.dirty || senhaFormControl.touched)"
+                    class="rounded-full w-full bg-zinc-200 border border-zinc-300 px-5" placeholder="Senha *"
                     [formControl]="senhaFormControl" required>
                 <i class="fa-regular absolute top-1/2 -translate-y-1/2 right-16 text-blue-uai cursor-pointer"
                     [ngClass]="{'fa-eye': !mostrarSenha, 'fa-eye-slash': mostrarSenha}"
@@ -73,101 +66,37 @@
                 <div class="w-full px-10 form-group">
                     <input #nomeCompleto type="text"
                         [class.errors]="cadastroForm.get('nomeCompleto')?.invalid && (cadastroForm.get('nomeCompleto')?.dirty || cadastroForm.get('nomeCompleto')?.touched) || cadastroForm.get('nomeCompleto')?.errors?.['minlenght']"
-                        class="rounded-full w-full bg-zinc-200 border border-zinc-300 px-5" placeholder="Nome completo"
-                        formControlName="nomeCompleto" name="nomeCompleto" (input)="formatNomeCompleto($event)"
-                        required>
-                    <div
-                        *ngIf="cadastroForm.get('nomeCompleto')?.invalid && (cadastroForm.get('nomeCompleto')?.dirty || cadastroForm.get('nomeCompleto')?.touched)">
-                        <div *ngIf="cadastroForm.get('nomeCompleto')?.errors?.['required']"
-                            class="text-xs text-red-500 pl-5 pt-1">
-                            Campo
-                            obrigatório.</div>
-                    </div>
+                        class="rounded-full w-full bg-zinc-200 border border-zinc-300 px-5"
+                        placeholder="Nome completo *" formControlName="nomeCompleto" name="nomeCompleto"
+                        (input)="formatNomeCompleto($event)" required>
                 </div>
-                <div class="w-full px-10 form-group" [ngClass]="{
-                  'mt-6': !nomeCompleto.classList.contains('errors') || cadastroForm.get('nomeCompleto')?.valid || cadastroForm.get('nomeCompleto')?.value === null,
-                  'mt-2': nomeCompleto.classList.contains('errors')
-                }">
-                    <input #dataNascimento type="text"
+                <div class="w-full px-10 mt-6 form-group">
+                    <input #dataNascimento type="text" mask="XX/XX/XXXX" [dropSpecialCharacters]="false"
                         [class.errors]="cadastroForm.get('dataNascimento')?.invalid && (cadastroForm.get('dataNascimento')?.dirty || cadastroForm.get('dataNascimento')?.touched)"
                         class="rounded-full w-full bg-zinc-200 border border-zinc-300 px-5"
-                        placeholder="Data de nascimento" formControlName="dataNascimento" name="dataNascimento" required
-                        (input)="formatDataNascimento($event)" maxlength="10">
-                    <div
-                        *ngIf="cadastroForm.get('dataNascimento')?.invalid && (cadastroForm.get('dataNascimento')?.dirty || cadastroForm.get('dataNascimento')?.touched)">
-                        <div *ngIf="cadastroForm.get('dataNascimento')?.errors?.['required']"
-                            class="text-xs text-red-500 pl-5 pt-1">
-                            Campo
-                            obrigatório.</div>
-                    </div>
+                        placeholder="Data de nascimento *" formControlName="dataNascimento" name="dataNascimento"
+                        required>
                 </div>
-                <div class="w-full px-10 form-group" [ngClass]="{
-                    'mt-6': !dataNascimento.classList.contains('errors') || cadastroForm.get('dataNascimento')?.valid || cadastroForm.get('dataNascimento')?.value === null,
-                    'mt-2': dataNascimento.classList.contains('errors')
-                  }">
-                    <input #cpf type="text"
+                <div class="w-full px-10 mt-6 form-group">
+                    <input #cpf type="text" mask="000.000.000-00" [dropSpecialCharacters]="false"
                         [class.errors]="cadastroForm.get('cpf')?.invalid && (cadastroForm.get('cpf')?.dirty || cadastroForm.get('cpf')?.touched)"
-                        class="rounded-full w-full bg-zinc-200 border border-zinc-300 px-5" placeholder="CPF"
-                        formControlName="cpf" required (input)="formatCPF($event)" maxlength="14">
-
-                    <div
-                        *ngIf="cadastroForm.get('cpf')?.invalid && (cadastroForm.get('cpf')?.dirty || cadastroForm.get('cpf')?.touched)">
-                        <div *ngIf="cadastroForm.get('cpf')?.errors?.['required']"
-                            class="text-xs text-red-500 pl-5 pt-1">
-                            Campo
-                            obrigatório.</div>
-                        <div *ngIf="cadastroForm.get('cpf')?.errors?.['cpfInvalid']"
-                            class="text-xs text-red-500 pl-5 pt-1">CPF
-                            inválido.
-                        </div>
-                    </div>
+                        class="rounded-full w-full bg-zinc-200 border border-zinc-300 px-5" placeholder="CPF *"
+                        formControlName="cpf" required>
                 </div>
-                <div class="w-full px-10 form-group" [ngClass]="{
-                    'mt-6': !cpf.classList.contains('errors') || cadastroForm.get('cpf')?.valid || cadastroForm.get('cpf')?.value === null,
-                    'mt-2': cpf.classList.contains('errors')
-                  }">
+                <div class="w-full px-10 mt-6 form-group">
                     <input #email type="email"
                         [class.errors]="cadastroForm.get('email')?.invalid && (cadastroForm.get('email')?.dirty || cadastroForm.get('email')?.touched)"
-                        class="rounded-full w-full bg-zinc-200 border border-zinc-300 px-5" placeholder="E-mail"
+                        class="rounded-full w-full bg-zinc-200 border border-zinc-300 px-5" placeholder="E-mail *"
                         formControlName="email" required>
-
-                    <div
-                        *ngIf="cadastroForm.get('email')?.invalid && (cadastroForm.get('email')?.dirty || cadastroForm.get('email')?.touched)">
-                        <div *ngIf="cadastroForm.get('email')?.errors?.['required']"
-                            class="text-xs text-red-500 pl-5 pt-1">
-                            Campo
-                            obrigatório.</div>
-                        <div *ngIf="cadastroForm.get('email')?.errors?.['email']"
-                            class="text-xs text-red-500 pl-5 pt-1">formato de email inválido.
-                        </div>
-                    </div>
                 </div>
-                <div class="w-full px-10" [ngClass]="{
-                    'mt-6': !email.classList.contains('errors') || cadastroForm.get('email')?.valid || cadastroForm.get('email')?.value === null,
-                    'mt-2': email.classList.contains('errors')
-                  }">
+                <div class="w-full px-10 mt-6 form-group">
                     <input #senha [type]="mostrarSenha ? 'text' : 'password'"
                         [class.errors]="cadastroForm.get('senha')?.invalid && (cadastroForm.get('senha')?.dirty || cadastroForm.get('senha')?.touched)"
-                        class="rounded-full w-full bg-zinc-200 border border-zinc-300 px-5" placeholder="Senha"
-                        formControlName="senha" required minlength="8">
+                        class="rounded-full w-full bg-zinc-200 border border-zinc-300 px-5"
+                        placeholder="Senha (mínimo 8 caracteres) *" formControlName="senha" required minlength="8">
                     <i class="fa-regular absolute top-5/7 -translate-y-5/7 mt-3 right-16 text-blue-uai cursor-pointer"
                         [ngClass]="{'fa-eye': !mostrarSenha, 'fa-eye-slash': mostrarSenha}"
                         (click)="mostrarSenha = !mostrarSenha"></i>
-
-                    <div
-                        *ngIf="cadastroForm.get('senha')?.invalid && (cadastroForm.get('senha')?.dirty || cadastroForm.get('senha')?.touched)">
-                        <div *ngIf="cadastroForm.get('senha')?.errors?.['required']"
-                            class="text-xs text-red-500 pl-5 pt-1">
-                            Campo
-                            obrigatório.</div>
-                        <div *ngIf="cadastroForm.get('senha')?.errors?.['minlength']"
-                            class="text-xs text-red-500 pl-5 pt-1">A senha precisa conter pelo menos 8 digitos.
-                        </div>
-                        <div *ngIf="cadastroForm.get('senha')?.errors?.['pattern']"
-                            class="text-xs text-red-500 pl-5 pt-1">A senha precisa conter: número, MAIÚSCULA,
-                            minúscula, caractere especial; .
-                        </div>
-                    </div>
                 </div>
 
                 <div class="w-full px-16 mt-2 flex gap-2 items-center form-group">
@@ -208,7 +137,7 @@
             <div class="flex items-center justify-center mt-6">
                 <!-- border lg:border-white rounded-md py-2 px-10 text-xl lg:text-white text-blue-uai border-blue-uai abaixo-->
                 <button class="border border-white rounded-md py-2 px-10 text-xl text-white"
-                    (click)="cadastro = !cadastro; moveScroll()">Fazer login</button>
+                    (click)="cadastro = false; moveScroll()">Fazer login</button>
             </div>
             <div class="hidden lg:block lg:mt-6 lg:shadow-black lg:drop-shadow-2xl">
                 <img class="shadow-black drop-shadow-xl"
