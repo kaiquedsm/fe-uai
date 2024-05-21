@@ -43,7 +43,7 @@
             <div class="lg:mt-16 flex flex-col mt-6 gap-3 items-center">
                 <button class="lg:px-10 bg-blue-uai w-max rounded-lg px-5 py-2 text-white font-semibold"
                     (click)="login()">Entrar</button>
-                <button class="text-blue-uai font-semibold flex items-center gap-2" [routerLink]="['/']">
+                <button class="text-blue-uai font-semibold flex items-center gap-2" (click)="goBackOneSCreen()">
                     <i class="fa-solid fa-arrow-left"></i>
                     <p>Voltar</p>
                 </button>
