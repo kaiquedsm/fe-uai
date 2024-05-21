@@ -1,5 +1,5 @@
 <div id="container"
-    class="lg:grid lg:grid-cols-12 lg:before:w-[100vw] lg:before:h-[100vw] lg:before:left-0 lg:before:-translate-y-[45%] lg:before:-translate-x-[50vw] h-screen w-screen relative z-0 lg:overflow-hidden overflow-x-hidden before:content-[''] before:w-[93rem] before:h-[93rem] before:bg-blue-uai before:absolute before:-z-10 before:rounded-full before:left-1/2 before:-translate-x-1/2 before:-translate-y-[83%] before:transition-all before:duration-[1500ms] before:ease-in-out flex flex-col"
+    class="lg:grid lg:grid-cols-12 lg:before:w-[100vw] lg:before:h-[100vw] lg:before:left-0 lg:before:-translate-y-[45%] lg:before:-translate-x-[50vw] h-screen w-screen fixed z-0 lg:overflow-hidden overflow-x-hidden before:content-[''] before:w-[93rem] before:h-[93rem] before:bg-blue-uai before:absolute before:-z-10 before:rounded-full before:left-1/2 before:-translate-x-1/2 before:-translate-y-[83%] before:transition-all before:duration-[1500ms] before:ease-in-out flex flex-col"
     [ngClass]="{'lg:before:translate-x-[40%]': cadastro}">
     <div class="lg:mt-8 lg:col-span-4 lg:items-start lg:h-full transition-all duration-[1500ms] ease-in-out p-6 flex flex-col items-center"
         [ngClass]="{'lg:-translate-x-[100vw]': cadastro}">
@@ -16,7 +16,7 @@
         </div>
     </div>
 
-    <div class="lg:col-span-4 lg:ms-[70%] lg:h-full lg:flex lg:flex-col lg:justify-center w-full transition-all duration-[1500ms] ease-in-out flex-grow pt-8 lg:pt-0 md:pt-24"
+    <div class="lg:col-span-4 lg:ms-[70%] lg:h-full lg:flex lg:flex-col lg:justify-center w-full relative transition-all duration-[1500ms] ease-in-out flex-grow pt-8 lg:pt-0"
         [ngClass]="{'lg:-translate-x-[100vw] lg:-translate-y-0 lg:-z-20': cadastro}">
         <h2 class="lg:text-5xl text-center font-semibold text-blue-uai text-3xl">Bem vindo!</h2>
         <small class="lg:text-xl lg:mt-2 text-blue-uai text-center block text-sm font-semibold opacity-70">Faça seu
@@ -98,7 +98,6 @@
                         [ngClass]="{'fa-eye': !mostrarSenha, 'fa-eye-slash': mostrarSenha}"
                         (click)="mostrarSenha = !mostrarSenha"></i>
                 </div>
-
                 <div class="w-full px-16 mt-2 flex gap-2 items-center form-group">
                     <input class="rounded-sm border border-blue-uai cursor-pointer" type="checkbox"
                         [class.errors]="cadastroForm.get('termosUso')?.invalid && (cadastroForm.get('termosUso')?.dirty || cadastroForm.get('termosUso')?.touched)"
@@ -124,7 +123,6 @@
                         <p>Voltar</p>
                     </button>
                 </div>
-
             </form>
         </div>
         <div class="lg:absolute lg:mt-4 lg:left-[50vw] lg:transition-all lg:ease-in-out lg:duration-[1500ms] p-4 flex flex-col w-full items-center justify-end flex-grow lg:bg-transparent bg-blue-uai mt-4"
@@ -135,7 +133,6 @@
                     cadastro?</h1>
             </footer>
             <div class="flex items-center justify-center mt-6">
-                <!-- border lg:border-white rounded-md py-2 px-10 text-xl lg:text-white text-blue-uai border-blue-uai abaixo-->
                 <button class="border border-white rounded-md py-2 px-10 text-xl text-white"
                     (click)="cadastro = false; moveScroll()">Fazer login</button>
             </div>
@@ -147,3 +144,4 @@
         </div>
     </div>
 </div>
+<app-loading *ngIf="isLoading" class="fixed bottom-0 right-0"></app-loading>

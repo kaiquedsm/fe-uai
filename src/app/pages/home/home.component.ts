@@ -1,6 +1,5 @@
 import { NgIfContext } from '@angular/common';
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { Router } from '@angular/router';
 import { initFlowbite } from 'flowbite';
 
 @Component({
@@ -20,11 +19,7 @@ export class HomeComponent implements OnInit {
   currentIndex: number = 0;
   isDesktop: boolean = true;
 
-  constructor(private router: Router) { }
-
-  loginForm() {
-    this.router.navigate(['/login-cadastro']);
-  }
+  constructor() { }
 
   ngOnInit(): void {
 

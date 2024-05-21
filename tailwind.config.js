@@ -12,8 +12,13 @@ module.exports = {
       }),
       colors: {
         'purple-uai': '#602DE1',
+        'purple-uai-50': '#b094f4',
         'cian-uai': '#90E0EF',
         'blue-uai': '#1160F1',
+        'blue-uai-10': '#e8ecfc',
+        'blue-uai-70': '#d0e8f4',
+        'blue-uai-ho-35': '#2596be',
+        'blue-light-uai': '#F1F6FF',
         'white-uai': '#FFFFFF',
         'darkgray-uai': '#212236',
       },
