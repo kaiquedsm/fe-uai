@@ -49,7 +49,7 @@ export class ModuloComponent implements OnInit {
     })
 
     this.necessidadeService.listarNecessidade().subscribe({
-      next: (response) => this.moduloEducacao = response,
+      next: (response) => this.moduloEducacao = response.body.filter(m => m.id === 1)[0],
       error: (err) => {
         console.log(err);
       }

@@ -1,12 +1,13 @@
 import { Injectable } from "@angular/core";
 import { UserService } from "../core/services/user.service";
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
+import { Observable, catchError, throwError } from "rxjs";
+import { Router } from "@angular/router";
 
 @Injectable()
 export class RequestInterceptor implements HttpInterceptor {
 
-    constructor(private userService: UserService) {
+    constructor(private userService: UserService, private router: Router) {
 
     }
     
@@ -18,6 +19,13 @@ export class RequestInterceptor implements HttpInterceptor {
         if(token) {
             return next.handle(req.clone({
                 headers: req.headers.set('Authorization', `Bearer ${token}`)
+            })).pipe(catchError((error: any) => {
+                if(error.status === 401) {
+                    this.userService.logout();
+                    this.router.navigate(['/login-cadastro']);
+                    return next.handle(req);
+                } 
+                return next.handle(req);
             }));
         }
         return next.handle(req);

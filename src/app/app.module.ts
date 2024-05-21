@@ -55,7 +55,7 @@ export function playerFactory() {
     LottieComponent,
     LottieDirective
   ],
-  providers: [HttpClient, { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true }, {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}],
+  providers: [HttpClient, {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}, { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
