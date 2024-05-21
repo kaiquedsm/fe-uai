@@ -6,7 +6,7 @@
     <div class="hidden sm:flex gap-10">
         <button [routerLink]="['/']">Início</button>
         <button [routerLink]="['/modulo']" *ngIf="loggedIn">Módulos</button>
-        <button>Sobre nós</button>
+        <button [routerLink]="['/sobre-nos']">Sobre nós</button>
         <button>Contato</button>
     </div>
     <div>

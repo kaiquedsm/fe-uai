@@ -24,6 +24,7 @@ import { ChatSidebarComponent } from './components/chat-sidebar/chat-sidebar.com
 
 import player from 'lottie-web';
 import { LoadingInterceptor } from './interceptors/loading-interceptor';
+import { SobreNosComponent } from './pages/sobre-nos/sobre-nos.component';
 
 export function playerFactory() {
   return player;
@@ -39,7 +40,8 @@ export function playerFactory() {
     LoadingComponent,
     ChatComponent,
     ModuloComponent,
-    ChatSidebarComponent
+    ChatSidebarComponent,
+    SobreNosComponent
   ],
   imports: [
     BrowserModule,
