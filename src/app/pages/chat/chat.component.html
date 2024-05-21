@@ -1,7 +1,7 @@
 <main class="grid grid-flow-row-dense grid-cols-5 h-screen">
     <section
-        class="col-span-5 block absolute -translate-x-[200%] z-10 min-w-[90vw] bg-white transition-transform ease-in-out duration-500 rounded-lg h-full lg:col-span-1 lg:block lg:relative lg:-translate-x-0 lg:min-w-0"
-        [ngClass]="{'-translate-x-[0%]': sidebarHabilitada}">
+        class="col-span-5 block absolute -translate-x-[200%] z-10 min-w-[90vw] bg-white transition-transform ease-in-out duration-500 rounded-lg h-screen lg:col-span-1 lg:block lg:relative lg:-translate-x-0 lg:min-w-0"
+        [ngClass]="{'translate-x-0': sidebarHabilitada}">
         <div
             class="lg:hidden absolute top-4 right-[-1.25rem] bg-blue-uai rounded-full w-10 h-10 flex flex-col items-center justify-center">
             <fa-icon [icon]="close" class="text-xl text-white" (click)="sidebarHabilitada = false"></fa-icon>
@@ -43,9 +43,9 @@
                 <div *ngFor="let mensagem of mensagens;" class="flex gap-3 items-end my-6"
                     [ngClass]="{'justify-end': mensagem.origemMensagem === 'USUARIO_ABERTURA'}">
 
-                    <div class="flex justify-center items-center rounded-full bg-blue-uai w-10 lg:h-10 p-2"
+                    <div class="flex justify-center items-center bg-blue-uai min-w-10 max-w-full rounded-full"
                         *ngIf="mensagem.origemMensagem !== 'USUARIO_ABERTURA'">
-                        <img src="../../../assets/imgs/icon-logo-white.svg" alt="Icone uAi" class="w-full" />
+                        <img src="../../../assets/imgs/icon-logo-white.svg" alt="Icone uAi" class="max-w-10 p-3" />
                     </div>
 
                     <div class="bg-blue-uai-10 p-3 rounded-tr-lg rounded-tl-lg rounded-br-lg break-words lg:w-max"
@@ -81,7 +81,7 @@
                     </div> -->
                 <div class="w-full flex items-center pb-3">
                     <input type="text" placeholder="Digite uma pergunta para o uAI" [formControl]="mensagemFormControl"
-                        class="border shadow-md rounded-full py-3 px-4 w-full placeholder-gray-400"
+                        class="border shadow-md rounded-full py-3 ps-4 pe-16 w-full placeholder-gray-400"
                         [ngClass]="{'border-red-600 focus:border-red-600 focus:outline-red-600': submitted && mensagemFormControl.errors}"
                         (keyup.enter)="btnEnviarMensagem.click()" />
                     <div class="absolute right-3 bg-blue-uai p-3 rounded-full mr-1.5 cursor-pointer" #btnEnviarMensagem (click)="enviarMensagem()">

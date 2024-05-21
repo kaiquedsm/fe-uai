@@ -1,13 +1,12 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { faBars, faClose } from '@fortawesome/free-solid-svg-icons';
-import { Subject, debounceTime, delay } from 'rxjs';
+import { Subject, catchError, combineLatest, debounceTime, delay, of } from 'rxjs';
 import { Chat } from 'src/app/core/models/chat.models';
 import { Mensagem } from 'src/app/core/models/mensagem.models';
 import { ChatService } from 'src/app/core/services/chat.service';
 import { LoadingService } from 'src/app/core/services/loading.service';
-import { NecessidadeService } from 'src/app/core/services/necessidade.service';
 import { UserService } from 'src/app/core/services/user.service';
 import { WebsocketService } from 'src/app/core/services/websocket.service';
 
@@ -66,24 +65,42 @@ export class ChatComponent implements OnInit {
           texto: value,
           origemMensagem: 'USUARIO_ABERTURA'
         }).subscribe({
-          complete: () => {
+          next: _ => {
             this.mensagemFormControl.setValue('');
+          },
+          complete: () => {
             this.submitted = false;
           }
         });
       }
+    });
+
+    combineLatest([
+      this.activeRoute.params,
+      this.activeRoute.queryParams.pipe(catchError(_=> of({message: 'newChatId param not found'})))
+    ]).subscribe({
+      next: ([path, query]) => {
+        
+        const isParams = (query: any): query is Params => {
+          return (<Params>query)['newChatId'] !== undefined;
+        }
+        
+        this.idNecessidadeSelecionada = Number(path['idNecessidade']);
+
+        if(isParams(query)) {
+          const chatId = Number((query as Params)['newChatId']);
+          this.carregarMeusChats(chatId);
+          this.carregarMensagens({id: chatId});
+        } else {
+          this.carregarMeusChats();
+        }
+
+      }
     })
 
-    this.activeRoute.params.subscribe({
-      next: (params) => {
-        this.idNecessidadeSelecionada = Number(params['idNecessidade']);
-        this.carregarMeusChats();
-      }
-    });
-    
     this.webSocketService.mensagemRespostaSubject.subscribe({
       next: (resposta) => {
-        if (resposta.texto) {
+        if (resposta.texto && this.mensagens.find(m => m.id == resposta.id) === undefined) {
           this.mensagens.push(resposta);
           setTimeout(() => {
             this.chatbox.nativeElement.scrollTop = this.chatbox.nativeElement.scrollHeight;

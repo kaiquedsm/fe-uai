@@ -53,6 +53,7 @@ export class ChatSidebarComponent implements OnInit, OnChanges {
 
   selecionarChat(chat: Chat) {
     this.onChatSelecionado.emit(chat);
+    this.pesquisaFormControl.reset();
   }
 
   criarChat() {
