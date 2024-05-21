@@ -1,5 +1,36 @@
-<header class="bg-blue-uai text-white-uai h-16 flex justify-between items-center">
-    <div class="sm:hidden">
+<section
+    class="col-span-5 block fixed -translate-x-[200%] z-50 min-w-[90vw] bg-white transition-transform ease-in-out duration-500 rounded-xl h-screen lg:col-span-1 lg:block lg:relative lg:-translate-x-0 lg:min-w-0"
+    [ngClass]="{'translate-x-0': menuHabilitado}">
+    <div
+        class="lg:hidden absolute top-4 right-[-1.25rem] bg-white rounded-full w-10 h-10 flex flex-col items-center justify-center">
+        <fa-icon [icon]="close" class="text-xl text-blue-uai" (click)="menuHabilitado = false"></fa-icon>
+    </div>
+
+    <ul class="flex flex-col">
+        <li class="bg-blue-uai p-8 rounded-xl font-semibold" (click)="loginCadastro()">
+            <div class="text-white">{{ loggedIn ? 'Sair' : 'Fazer login' }}</div>
+        </li>
+        <li class="mt-12 ps-8 flex gap-5 items-center font-semibold" [routerLink]="['/']">
+            <img src="../../../assets/imgs/home.svg" alt="ícone da página de início">
+             Início
+        </li>
+        <li *ngIf="loggedIn" class="mt-5 ps-8 flex gap-5 items-center font-semibold" [routerLink]="['/modulo']">
+            <img src="../../../assets/imgs/book_4.svg" class="h-[12px] w-[13px]" alt="ícone da página de módulos">
+            Módulos
+        </li>
+        <li class="mt-5 ps-8 flex gap-5 items-center font-semibold" [routerLink]="['/sobre-nos']">
+            <img src="../../../assets/imgs/forum.svg" alt="ícone da página sobre nós">
+            Sobre nós
+        </li>
+        <li class="mt-5 ps-8 flex gap-5 items-center font-semibold">
+            <img src="../../../assets/imgs/mail.svg" alt="ícone da página de contato">
+            Contato
+        </li>
+    </ul>
+</section>
+
+<header class="bg-blue-uai text-white-uai h-16 flex justify-between items-center w-full">
+    <div class="sm:hidden" (click)="menuHabilitado = true">
         <fa-icon [icon]="faBars" class="p-10 text-xl"></fa-icon>
     </div>
     <div class="h-full"><img src="../assets/imgs/projeto-marketing.JPG" alt="uAi" class="h-full"></div>
@@ -9,7 +40,7 @@
         <button [routerLink]="['/sobre-nos']">Sobre nós</button>
         <button>Contato</button>
     </div>
-    <div>
+    <div class="hidden lg:block">
         <button class="hidden sm:block p-1 px-4 mr-10 border-white-uai border-solid border rounded-md"
             (click)="loginCadastro()">{{ loggedIn ? 'Sair' : 'Entrar' }}</button>
     </div>
