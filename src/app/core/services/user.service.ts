@@ -30,7 +30,6 @@ export class UserService {
     if (dadosLoginLocalStorage) {
       const dadosLoginObjeto = JSON.parse(dadosLoginLocalStorage);
       this.dadosLogin?.next(dadosLoginObjeto);
-      console.log(this.dadosLogin.value);
     }
   }
 
@@ -40,6 +39,11 @@ export class UserService {
 
   cadastrarCasual(usuario: Usuario) {
     return this.http.post(`${environment.target}/casual`, usuario);
+  }
+
+  logout() {
+    this.dadosLogin.next({} as RespostaLogin);
+    localStorage.clear();
   }
 
 }

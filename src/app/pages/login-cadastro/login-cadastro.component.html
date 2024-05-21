@@ -1,13 +1,14 @@
-<div class="lg:grid lg:grid-cols-12 lg:before:w-[100vw] lg:before:h-[100vw] lg:before:left-0 lg:before:-translate-y-[45%] lg:before:-translate-x-[50vw] h-screen w-screen relative z-0 overflow-hidden before:content-[''] before:w-[93rem] before:h-[93rem] before:bg-blue-uai before:absolute before:-z-10 before:rounded-full before:left-1/2 before:-translate-x-1/2 before:-translate-y-[83%] before:transition-all before:duration-[1500ms] before:ease-in-out"
-    [ngClass]="{'before:translate-y-[35%] lg:before:translate-x-[40%]': cadastro}">
-    <div class="lg:col-span-4 lg:items-start lg:h-full transition-all duration-[1500ms] ease-in-out p-6 flex flex-col items-center h-[35vh]"
-        [ngClass]="{'-translate-y-[100vh] lg:-translate-x-[100vw]': cadastro}">
+<div id="container"
+    class="lg:grid lg:grid-cols-12 lg:before:w-[100vw] lg:before:h-[100vw] lg:before:left-0 lg:before:-translate-y-[45%] lg:before:-translate-x-[50vw] h-screen w-screen fixed z-0 lg:overflow-hidden overflow-x-hidden before:content-[''] before:w-[93rem] before:h-[93rem] before:bg-blue-uai before:absolute before:-z-10 before:rounded-full before:left-1/2 before:-translate-x-1/2 before:-translate-y-[83%] before:transition-all before:duration-[1500ms] before:ease-in-out flex flex-col"
+    [ngClass]="{'lg:before:translate-x-[40%]': cadastro}">
+    <div class="lg:col-span-4 lg:items-start lg:h-full transition-all duration-[1500ms] ease-in-out p-6 flex flex-col items-center"
+        [ngClass]="{'lg:-translate-x-[100vw]': cadastro}">
         <header class="mt-10">
             <h1 class="lg:text-5xl text-3xl font-semibold text-center text-white">Ainda não possui cadastro?</h1>
         </header>
         <div class="lg:self-center flex items-center justify-center mt-6">
             <button class="lg:px-5 border border-white rounded-md py-2 px-10 text-xl text-white"
-                (click)="cadastro = !cadastro">Fazer cadastro</button>
+                (click)="cadastro = !cadastro; moveScroll()">Fazer cadastro</button>
         </div>
         <div class="hidden lg:block lg:mt-6 lg:shadow-black lg:drop-shadow-2xl">
             <img class="" src="../../../assets/imgs/login-cadastro/imagem-mockup-uAI2.png"
@@ -15,30 +16,33 @@
         </div>
     </div>
 
-    <div class="lg:col-span-4 lg:ms-[70%] lg:h-full lg:flex lg:flex-col lg:justify-center w-full transition-all duration-[1500ms] ease-in-out h-[65vh]"
-        [ngClass]="{'-translate-y-[100vh] lg:-translate-x-[100vw] lg:-translate-y-0 lg:-z-20': cadastro}">
-        <h2 class="lg:text-5xl text-center font-semibold text-blue-uai text-3xl mt-12">Bem vindo!</h2>
+    <div class="lg:col-span-4 lg:ms-[70%] lg:h-full lg:flex lg:flex-col lg:justify-center w-full relative transition-all duration-[1500ms] ease-in-out flex-grow pt-8 lg:pt-0"
+        [ngClass]="{'lg:-translate-x-[100vw] lg:-translate-y-0 lg:-z-20': cadastro}">
+        <h2 class="lg:text-5xl text-center font-semibold text-blue-uai text-3xl">Bem vindo!</h2>
         <small class="lg:text-xl lg:mt-2 text-blue-uai text-center block text-sm font-semibold opacity-70">Faça seu
             login para
             continuar</small>
 
         <form class="lg:mt-20 w-full mt-8">
             <div class="w-full px-10">
-                <input type="text" class="rounded-full w-full bg-zinc-200 border border-zinc-300 px-5"
-                    placeholder="CPF" [formControl]="cpfFormControl">
+                <input type="text" class="rounded-full w-full bg-zinc-200 border border-zinc-300 px-5" placeholder="CPF"
+                    [formControl]="cpfFormControl">
             </div>
             <div class="w-full px-10 mt-6 relative">
-                <input [type]="mostrarSenha ? 'text' : 'password'" class="rounded-full w-full bg-zinc-200 border border-zinc-300 px-5"
-                    placeholder="Senha" [formControl]="senhaFormControl">
+                <input [type]="mostrarSenha ? 'text' : 'password'"
+                    class="rounded-full w-full bg-zinc-200 border border-zinc-300 px-5" placeholder="Senha"
+                    [formControl]="senhaFormControl">
                 <i class="fa-regular absolute top-1/2 -translate-y-1/2 right-16 text-blue-uai"
-                [ngClass]="{'fa-eye': !mostrarSenha, 'fa-eye-slash': mostrarSenha}" (click)="mostrarSenha = !mostrarSenha"></i>
+                    [ngClass]="{'fa-eye': !mostrarSenha, 'fa-eye-slash': mostrarSenha}"
+                    (click)="mostrarSenha = !mostrarSenha"></i>
             </div>
             <div class="mt-2">
                 <p class="lg:ps-16 lg:text-start font-semibold text-center text-blue-uai">Esqueci minha senha</p>
             </div>
 
             <div class="lg:mt-16 flex flex-col mt-6 gap-3 items-center">
-                <button class="lg:px-10 bg-blue-uai w-max rounded-lg px-5 py-2 text-white font-semibold" (click)="login()">Entrar</button>
+                <button class="lg:px-10 bg-blue-uai w-max rounded-lg px-5 py-2 text-white font-semibold"
+                    (click)="login()">Entrar</button>
                 <button class="text-blue-uai font-semibold flex items-center gap-2" [routerLink]="['/']">
                     <i class="fa-solid fa-arrow-left"></i>
                     <p>Voltar</p>
@@ -47,11 +51,12 @@
         </form>
     </div>
 
-    <div class="lg:col-span-4 lg:ms-[110%] w-full transition-all duration-[1500ms] ease-in-out h-[100vh] flex flex-col relative"
-        [ngClass]="{'translate-y-[108vh] lg:translate-y-0 lg:translate-x-[100vw]': !cadastro, '-translate-y-[108vh] lg:-translate-y-0 lg:-translate-x-[100vw]': cadastro}">
-        <div class="lg:h-auto lg:overflow-hidden mt-12 h-[50vh] overflow-y-scroll">
-            <h2 class="text-center font-semibold text-blue-uai text-3xl">Olá!</h2>
-            <small class="text-blue-uai text-center block text-sm font-semibold opacity-70 lg:text-lg">Faça seu cadastro para
+    <div class="lg:col-span-4 lg:ms-[110%] w-full transition-all duration-[1500ms] ease-in-out flex flex-col relative mt-[100%] lg:mt-0"
+        [ngClass]="{'lg:translate-y-0 lg:translate-x-[100vw]': !cadastro, 'lg:-translate-y-0 lg:-translate-x-[100vw]': cadastro}">
+        <div class="lg:h-auto lg:overflow-hidden overflow-y-scroll">
+            <h2 class="text-center font-semibold text-blue-uai text-3xl lg:mt-8">Olá!</h2>
+            <small class="text-blue-uai text-center block text-sm font-semibold opacity-70 lg:text-lg">Faça seu cadastro
+                para
                 entrar no site</small>
 
             <form class="w-full mt-8" [formGroup]="cadastroForm">
@@ -76,31 +81,34 @@
                         placeholder="Senha" formControlName="senha">
                 </div>
                 <div class="w-full px-16 mt-2 flex gap-2 items-center">
-                    <input class="rounded-sm border border-blue-uai cursor-pointer" type="checkbox" formControlName="termosUso" />
+                    <input class="rounded-sm border border-blue-uai cursor-pointer" type="checkbox"
+                        formControlName="termosUso" />
                     <p class="text-blue-uai font-semibold">
                         Li e concordo com os termos de uso
                     </p>
                 </div>
                 <div class="flex justify-center mt-6">
-                    <button class="bg-blue-uai w-max rounded-lg px-5 py-2 text-white font-semibold" (click)="cadastrar()">Cadastrar</button>
+                    <button class="bg-blue-uai w-max rounded-lg px-5 py-2 text-white font-semibold"
+                        (click)="cadastrar()">Cadastrar</button>
                 </div>
                 <div class="flex justify-center mt-3">
-                    <button class="text-blue-uai font-semibold flex items-center gap-2" (click)="cadastro = !cadastro">
+                    <button class="text-blue-uai font-semibold flex items-center gap-2"
+                        (click)="cadastro = !cadastro; moveScroll()">
                         <i class="fa-solid fa-arrow-left"></i>
                         <p>Voltar</p>
                     </button>
                 </div>
-                
             </form>
         </div>
         <div class="lg:absolute lg:top-0 lg:left-[50vw] lg:transition-all lg:ease-in-out lg:duration-[1500ms] p-6 flex flex-col w-full items-center justify-end flex-grow"
             [ngClass]="{'lg:-translate-y-[100vh]': !cadastro}">
             <footer class="mt-6">
-                <h1 class="text-3xl font-semibold text-center text-white">Já possui cadastro?</h1>
+                <h1 class="text-3xl font-semibold text-center lg:text-white text-blue-uai">Já possui cadastro?</h1>
             </footer>
             <div class="flex items-center justify-center mt-6">
-                <button class="border border-white rounded-md py-2 px-10 text-xl text-white"
-                    (click)="cadastro = !cadastro">Fazer login</button>
+                <button
+                    class="border lg:border-white rounded-md py-2 px-10 text-xl lg:text-white text-blue-uai border-blue-uai"
+                    (click)="cadastro = !cadastro; moveScroll()">Fazer login</button>
             </div>
             <div class="hidden lg:block lg:mt-6 lg:shadow-black lg:drop-shadow-2xl">
                 <img class="shadow-black drop-shadow-xl"
@@ -110,3 +118,4 @@
         </div>
     </div>
 </div>
+<app-loading *ngIf="isLoading" class="fixed bottom-0 right-0"></app-loading>
