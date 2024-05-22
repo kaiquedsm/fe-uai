@@ -25,6 +25,7 @@
     "@stomp/stompjs": "^7.0.0",
     "sockjs-client": "^1.6.1",
     "flowbite": "^2.3.0",
+    "ngx-mask": "^14.3.3",
     "lottie-web": "^5.12.2",
     "ngx-lottie": "^9.1.0",
     "rxjs": "~7.5.0",

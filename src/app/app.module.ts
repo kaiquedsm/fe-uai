@@ -17,6 +17,7 @@ import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common
 import { HomeComponent } from './pages/home/home.component';
 import { LoginCadastroComponent } from './pages/login-cadastro/login-cadastro.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxMaskModule } from 'ngx-mask';
 import { ChatComponent } from './pages/chat/chat.component';
 import { RequestInterceptor } from './interceptors/request-interceptor';
 import { ModuloComponent } from './pages/modulo/modulo.component';
@@ -51,13 +52,14 @@ export function playerFactory() {
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    LottieModule.forRoot({player: playerFactory})
+    NgxMaskModule.forRoot(),
+    LottieModule.forRoot({ player: playerFactory })
   ],
   exports: [
     LottieComponent,
     LottieDirective
   ],
-  providers: [HttpClient, {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}, { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true }],
+  providers: [HttpClient, { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true }, { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
