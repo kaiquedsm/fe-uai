@@ -21,12 +21,21 @@ export class WebsocketService {
     this._socket = new SockJS(`${environment.target}/live-chat`);
     this._client = Stomp.Stomp.over(this._socket);
 
+    this._client.activate();
+
+    this._client.reconnectDelay = 1000;
+
     this._client.connect({}, (frame: any) => {
       this._client!.subscribe(`/topic/chat/${idChat}`, (imessage: Stomp.IMessage) => {
         const message: Mensagem = JSON.parse(imessage.body);
         this._mensagemRespostaSubject.next(message);
       });
     });
+
+    this._client.onWebSocketError(() => {
+      this._client?.deactivate();
+    })
+
   }
 
   enviarMensagem(mensagem: Mensagem) {

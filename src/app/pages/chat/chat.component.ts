@@ -56,7 +56,7 @@ export class ChatComponent implements OnInit {
         this.isLoading = loading;
       })
 
-    const mensagemEnviadaDebounce = this.mensagemEnviada.pipe(debounceTime(200));
+    const mensagemEnviadaDebounce = this.mensagemEnviada.pipe(debounceTime(2000));
 
     mensagemEnviadaDebounce.subscribe({
       next: (value) => {
