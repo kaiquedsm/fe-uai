@@ -1,5 +1,5 @@
 export interface Necessidade {
-    id: Number,
-    nome: String,
-    descricao: String
-    }
+    id: number,
+    nome: string,
+    descricao: string
+}
