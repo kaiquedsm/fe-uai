@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faClose } from '@fortawesome/free-solid-svg-icons';
 import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
@@ -12,6 +11,7 @@ import { UserService } from 'src/app/core/services/user.service';
 export class HeaderComponent implements OnInit {
 
   loggedIn: boolean = false;
+  menuHabilitado: boolean = false;
 
   constructor(private router: Router, private userService: UserService) { }
 
@@ -33,5 +33,6 @@ export class HeaderComponent implements OnInit {
   }
 
   faBars = faBars
+  close = faClose;
 
 }

@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -33,7 +34,7 @@ export class LoginCadastroComponent implements OnInit {
 
   isLoading: boolean = false;
 
-  constructor(private userService: UserService, private loadingService: LoadingService, private router: Router) {
+  constructor(private userService: UserService, private loadingService: LoadingService, private router: Router, private location: Location) {
 
   }
 
@@ -180,5 +181,8 @@ export class LoginCadastroComponent implements OnInit {
     }
   }
 
-  // mapeamento de elementos HTML
+  goBackOneSCreen() {
+    this.location.back();
+  }
+
 }
