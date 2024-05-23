@@ -1,0 +1,13 @@
+<div class="w-2/3 lg:w-auto max-w-full bg-red-600 fixed top-5 right-5 p-5 z-50 rounded-lg transition-transform ease-in-out duration-700"
+[ngClass]="{'translate-x-[200%]': !showError, 'translate-x-0': showError}">
+    <header class="flex justify-between items-center">
+        <h1 class="text-white font-semibold">Erro</h1>
+        <fa-icon [icon]="close" class="text-xl text-white cursor-pointer" (click)="closeError()"></fa-icon>
+    </header>
+    <div>
+        <p class="text-white">
+            {{ errorMessage }}
+        </p>
+    </div>
+    <div class="transition-[width] ease-in-out bg-red-400 py-1 absolute bottom-0 left-0 rounded-lg w-full"></div>
+</div>
