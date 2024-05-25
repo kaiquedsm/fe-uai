@@ -38,6 +38,14 @@ export class WebsocketService {
 
   }
 
+  isConnected() {
+    return this._client?.connected;
+  }
+
+  disconnect() {
+    this._client?.disconnect();
+  }
+
   enviarMensagem(mensagem: Mensagem) {
     return this.http.post(`${environment.target}/mensagem`, mensagem);
   }

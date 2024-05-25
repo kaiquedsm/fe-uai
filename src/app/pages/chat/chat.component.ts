@@ -1,3 +1,5 @@
+import { Location } from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -18,6 +20,7 @@ import { WebsocketService } from 'src/app/core/services/websocket.service';
 export class ChatComponent implements OnInit {
 
   @ViewChild('chatbox') chatbox!: ElementRef<any>;
+  @ViewChild('textarea') textarea!: ElementRef<HTMLTextAreaElement>
 
   bars = faBars;
   close = faClose;
@@ -31,7 +34,7 @@ export class ChatComponent implements OnInit {
 
   sidebarHabilitada: boolean = false;
 
-  mensagemFormControl: FormControl = new FormControl('', Validators.required);
+  mensagemFormControl: FormControl = new FormControl('', [Validators.required, Validators.maxLength(255)]);
 
   submitted: boolean = false;
 
@@ -44,11 +47,12 @@ export class ChatComponent implements OnInit {
     private chatService: ChatService,
     private webSocketService: WebsocketService,
     private userService: UserService,
-    private activeRoute: ActivatedRoute
+    private activeRoute: ActivatedRoute,
+    private location: Location,
   ) { }
 
   ngOnInit(): void {
-    
+
     this.nomeUsuario = this.userService.dadosLogin.getValue()?.body?.usuarioLogado;
 
     this.loadingService.loadingSub.pipe(delay(0))
@@ -56,7 +60,7 @@ export class ChatComponent implements OnInit {
         this.isLoading = loading;
       })
 
-    const mensagemEnviadaDebounce = this.mensagemEnviada.pipe(debounceTime(2000));
+    const mensagemEnviadaDebounce = this.mensagemEnviada.pipe(debounceTime(1000));
 
     mensagemEnviadaDebounce.subscribe({
       next: (value) => {
@@ -67,6 +71,7 @@ export class ChatComponent implements OnInit {
         }).subscribe({
           next: _ => {
             this.mensagemFormControl.setValue('');
+            this.checkContent();
           },
           complete: () => {
             this.submitted = false;
@@ -77,20 +82,20 @@ export class ChatComponent implements OnInit {
 
     combineLatest([
       this.activeRoute.params,
-      this.activeRoute.queryParams.pipe(catchError(_=> of({message: 'newChatId param not found'})))
+      this.activeRoute.queryParams.pipe(catchError(_ => of({ message: 'newChatId param not found' })))
     ]).subscribe({
       next: ([path, query]) => {
-        
+
         const isParams = (query: any): query is Params => {
           return (<Params>query)['newChatId'] !== undefined;
         }
-        
+
         this.idNecessidadeSelecionada = Number(path['idNecessidade']);
 
-        if(isParams(query)) {
+        if (isParams(query)) {
           const chatId = Number((query as Params)['newChatId']);
           this.carregarMeusChats(chatId);
-          this.carregarMensagens({id: chatId});
+          this.carregarMensagens({ id: chatId });
         } else {
           this.carregarMeusChats();
         }
@@ -115,7 +120,7 @@ export class ChatComponent implements OnInit {
       next: (response) => {
         this.topicos = response.body
           .filter(c => c.idNecessidade === this.idNecessidadeSelecionada);
-        if(newChatId) {
+        if (newChatId) {
           this.chatSelecionado = this.topicos.find(t => t.id === newChatId);
         }
       }
@@ -123,7 +128,7 @@ export class ChatComponent implements OnInit {
   }
 
   criarChat(chat: Chat) {
-    this.chatService.criar({idNecessidade: this.idNecessidadeSelecionada, tipoAssistente: 'IA', titulo: chat.titulo!})
+    this.chatService.criar({ idNecessidade: this.idNecessidadeSelecionada, tipoAssistente: 'IA', titulo: chat.titulo! })
       .subscribe({
         next: (response) => {
 
@@ -142,18 +147,50 @@ export class ChatComponent implements OnInit {
   }
 
   carregarMensagens(chat: Chat) {
-    this.chatSelecionado = {...chat};
+    this.webSocketService.disconnect();
+    this.chatSelecionado = { ...chat };
     this.mensagens = [];
-    this.webSocketService.connect(chat.id!);
     this.chatService.carregarMensagens(chat.id!).subscribe({
       next: (response) => {
+        this.webSocketService.connect(chat.id!);
         this.mensagens = response.body;
         this.sidebarHabilitada = false;
         setTimeout(() => {
           this.chatbox.nativeElement.scrollTop = this.chatbox.nativeElement.scrollHeight;
         }, 200)
+      },
+      error: (error: HttpErrorResponse) => {
+        this.sidebarHabilitada = false;
+        if (error.status == 404 && !this.webSocketService.isConnected()) {
+          this.webSocketService.connect(chat.id!);
+        }
+        if (error.status == 403) {
+          this.webSocketService.disconnect();
+          this.location.back();
+        }
       }
     });
+  }
+
+  autogrow(event: KeyboardEvent) {
+
+    const textArea = this.textarea.nativeElement;
+
+    if (event.key == 'Enter' && !event.shiftKey) {
+      event.preventDefault();
+    } else {
+      textArea.style.overflow = 'hidden';
+      textArea.style.height = '0px';
+      textArea.style.height = textArea.scrollHeight + 'px';
+    }
+
+  }
+
+  checkContent() {
+    const textArea = this.textarea.nativeElement;
+    if(!textArea.value) {
+      textArea.style.height = '50px';
+    }
   }
 
   enviarMensagem() {

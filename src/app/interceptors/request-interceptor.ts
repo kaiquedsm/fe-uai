@@ -27,7 +27,7 @@ export class RequestInterceptor implements HttpInterceptor {
                     this.router.navigate(['/login-cadastro']);
                     return next.handle(req);
                 } 
-                return next.handle(req);
+                return throwError(() => error);
             }));
         }
         return next.handle(req);

@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
-import { interval, timeout } from 'rxjs';
 import { ErrorService } from 'src/app/core/services/error.service';
 
 @Component({
