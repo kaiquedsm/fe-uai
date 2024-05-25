@@ -69,7 +69,9 @@ export class LoginCadastroComponent implements OnInit {
           error: (err) => {
             this.errorMessage = err.error.message
 
-            if (this.errorMessage.includes('duplicate key') && this.errorMessage.includes('cpf')) {
+            if(err.error?.body) {
+              this.errorMessage = err.error.body.cpf
+            } else if (this.errorMessage.includes('duplicate key') && this.errorMessage.includes('cpf')) {
               this.errorMessage = 'O CPF informado já foi cadastrado no sistema';
             }
 
@@ -89,7 +91,12 @@ export class LoginCadastroComponent implements OnInit {
           },
           error: (err) => {
 
-            this.errorMessage = err.error.message
+            if(err.error?.body) {
+              this.errorMessage = err.error.body.cpf
+            } else {
+              this.errorMessage = err.error;
+            }
+
             this.errorService.errorSub.next(true);
 
           }
