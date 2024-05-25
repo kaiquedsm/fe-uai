@@ -2,7 +2,7 @@ import { Location } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { faBars, faClose } from '@fortawesome/free-solid-svg-icons';
 import { Subject, catchError, combineLatest, debounceTime, delay, of } from 'rxjs';
 import { Chat } from 'src/app/core/models/chat.models';
@@ -48,7 +48,7 @@ export class ChatComponent implements OnInit {
     private webSocketService: WebsocketService,
     private userService: UserService,
     private activeRoute: ActivatedRoute,
-    private location: Location,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -166,7 +166,7 @@ export class ChatComponent implements OnInit {
         }
         if (error.status == 403) {
           this.webSocketService.disconnect();
-          this.location.back();
+          this.router.navigate(['/']);
         }
       }
     });
