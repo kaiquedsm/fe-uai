@@ -22,10 +22,6 @@
             <img src="../../../assets/imgs/forum.svg" alt="ícone da página sobre nós">
             Sobre nós
         </li>
-        <li class="mt-5 ps-8 flex gap-5 items-center font-semibold">
-            <img src="../../../assets/imgs/mail.svg" alt="ícone da página de contato">
-            Contato
-        </li>
     </ul>
 </section>
 
@@ -38,7 +34,6 @@
         <button [routerLink]="['/']">Início</button>
         <button [routerLink]="['/modulo']" *ngIf="loggedIn">Módulos</button>
         <button [routerLink]="['/sobre-nos']">Sobre nós</button>
-        <button>Contato</button>
     </div>
     <div class="hidden lg:block">
         <button class="hidden sm:block p-1 px-4 mr-10 border-white-uai border-solid border rounded-md"
