@@ -14,7 +14,9 @@ export class RequestInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const token = this.userService.dadosLogin.getValue()?.body?.token;
         if(req.url.includes('casual') || req.url.includes('auth')) {
-            return next.handle(req);
+            return next.handle(req.clone({
+                headers: req.headers.delete('Authorization')
+            }));
         }
         if(token) {
             return next.handle(req.clone({
@@ -25,7 +27,7 @@ export class RequestInterceptor implements HttpInterceptor {
                     this.router.navigate(['/login-cadastro']);
                     return next.handle(req);
                 } 
-                return next.handle(req);
+                return throwError(() => error);
             }));
         }
         return next.handle(req);

@@ -27,7 +27,6 @@ export class HomeComponent implements OnInit {
 
     window.addEventListener('resize', () => {
       this.screen_width = window.innerWidth;
-      console.log(this.screen_width);
 
       if (this.screen_width >= 640) {
         return this.isDesktop = true
@@ -52,7 +51,6 @@ export class HomeComponent implements OnInit {
         return
       }
       this.number_img_carousel++
-      console.log(this.screen_width);
 
     }, 5000)
 

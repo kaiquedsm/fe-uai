@@ -82,14 +82,16 @@
     
                     </div> -->
                 <div class="w-full flex items-center pb-3">
-                    <input type="text" placeholder="Digite uma pergunta para o uAI" [formControl]="mensagemFormControl"
-                        class="border shadow-md rounded-full py-3 ps-4 pe-16 w-full placeholder-gray-400"
+                    <textarea placeholder="Digite uma pergunta para o uAI" [formControl]="mensagemFormControl"
+                        #textarea
+                        class="border shadow-md rounded-xl py-3 ps-4 pe-16 w-full placeholder-gray-400 overflow-scrollbar-hidden h-[50px] max-h-[200px]"
                         [ngClass]="{'border-red-600 focus:border-red-600 focus:outline-red-600': submitted && mensagemFormControl.errors}"
-                        (keyup.enter)="btnEnviarMensagem.click()" />
-                    <div class="absolute right-3 bg-blue-uai p-3 rounded-full mr-1.5 cursor-pointer" #btnEnviarMensagem
+                        (keypress)="autogrow($event)" (keyup)="checkContent()"
+                            (keyup.enter)="btnEnviarMensagem.click()"></textarea>
+                    <button class="absolute right-3 bg-blue-uai p-3 rounded-full mr-1.5 cursor-pointer self-end mb-1 disabled:opacity-50" [disabled]="isLoading" #btnEnviarMensagem
                         (click)="enviarMensagem()">
-                        <img src="../../../assets/imgs/send.svg" class=" w-4 h-4 " alt="Icone de lupa" />
-                    </div>
+                        <img src="../../../assets/imgs/send.svg" class="w-4 h-4 " alt="Icone de lupa" />
+                    </button>
                 </div>
             </div>
 

@@ -2,7 +2,8 @@ import { Location } from '@angular/common';
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { delay } from 'rxjs';
+import { Subject, debounceTime, delay } from 'rxjs';
+import { ErrorService } from 'src/app/core/services/error.service';
 import { LoadingService } from 'src/app/core/services/loading.service';
 import { UserService } from 'src/app/core/services/user.service';
 
@@ -34,16 +35,69 @@ export class LoginCadastroComponent implements OnInit {
 
   isLoading: boolean = false;
 
-  constructor(private userService: UserService, private loadingService: LoadingService, private router: Router, private location: Location) {
+  errorMessage: string = '';
+
+  private cadastroSub: Subject<any> = new Subject();
+
+  private loginSub: Subject<any> = new Subject();
+
+  constructor(private userService: UserService, private loadingService: LoadingService, private router: Router, private location: Location, private errorService: ErrorService) {
 
   }
 
   ngOnInit(): void {
+
     this.cadastroUserValidators();
+
     this.loadingService.loadingSub.pipe(delay(0))
       .subscribe((loading) => {
         this.isLoading = loading;
       });
+
+    const cadastroSubDebounce = this.cadastroSub.pipe(debounceTime(1000));
+    const loginSubDebounce = this.loginSub.pipe(debounceTime(1000));
+
+    cadastroSubDebounce.subscribe({
+      next: (payload: any) => {
+        this.userService.cadastrarCasual(payload).subscribe({
+          next: _ => {
+            this.cpfFormControl.patchValue(this.cadastroForm.get('cpf')!.value);
+            this.senhaFormControl.patchValue(this.cadastroForm.get('senha')!.value);
+            this.cadastro = false;
+            this.moveScroll();
+          },
+          error: (err) => {
+            this.errorMessage = err.error.message
+
+            if (this.errorMessage.includes('duplicate key') && this.errorMessage.includes('cpf')) {
+              this.errorMessage = 'O CPF informado já foi cadastrado no sistema';
+            }
+
+            this.errorService.errorSub.next(true);
+          }
+        });
+      }
+    });
+
+    loginSubDebounce.subscribe({
+      next: (value) => {
+        this.userService.autenticar(value).subscribe({
+          next: (response) => {
+            localStorage.setItem('dadosLogin', JSON.stringify(response));
+            this.userService.dadosLogin.next(response);
+            this.router.navigate(['/modulo']);
+          },
+          error: (err) => {
+
+            this.errorMessage = err.error.message
+            this.errorService.errorSub.next(true);
+
+          }
+        });
+      }
+    })
+
+
 
     this.cadastroForm = this.formBuilder.group({
       nomeCompleto: [null, Validators.required],
@@ -77,17 +131,8 @@ export class LoginCadastroComponent implements OnInit {
         senha: this.senhaFormControl.value
       };
 
-      this.userService.autenticar(dadosLogin).subscribe({
-        next: (response) => {
-          localStorage.setItem('dadosLogin', JSON.stringify(response));
-          this.userService.dadosLogin.next(response);
-          this.router.navigate(['/modulo']); // Aqui eu redireciono o usuário de volta pra home se deu certo. Quando a próxima tela depois do login estiver pronta, deve ser redirecionado pra lá.
-        },
-        error: (err) => {
-          console.log(err.error.message);
-          console.log(err.error.uri ?? err.error.body?.senha ?? err.error.body?.cpf);
-        }
-      });
+      this.loginSub.next(dadosLogin);
+
     } else {
       // Marcar os campos inválidos
       if (this.cpfFormControl.invalid) {
@@ -111,38 +156,22 @@ export class LoginCadastroComponent implements OnInit {
       const dataAmericana = dataArr.reverse().join('-');
 
       if (this.validarIdadeMinima(dataAmericana)) {
-        this.userService.cadastrarCasual({ ...this.cadastroForm.value, dataNascimento: dataAmericana }).subscribe({
-          next: _ => {
-            this.cpfFormControl.patchValue(this.cadastroForm.get('cpf')!.value);
-            this.senhaFormControl.patchValue(this.cadastroForm.get('senha')!.value);
-            this.cadastro = false;
-            this.router.navigate(['/']); // Redirecionar para a página inicial após o cadastro
-          },
-          error: (err) => {
-            console.log(err.error.message);
-            console.log(err.error.uri ?? err.error.body?.cpf ?? err.error.body?.senha);
-          }
-        });
+        this.cadastroSub.next({ ...this.cadastroForm.value, dataNascimento: dataAmericana });
       } else {
-        // Chamar o componente de erros
+        this.errorMessage = 'A idade mínima para se cadastrar no sistema é de 12 anos'
+        this.errorService.errorSub.next(true);
       }
+
     } else {
-      // Marcar os campos inválidos
+
       Object.keys(this.cadastroForm.controls).forEach(key => {
         const control = this.cadastroForm.get(key);
         if (control && control.invalid) {
           control.markAsDirty();
           control.markAsTouched();
-          this.userService.cadastrarCasual({ ...this.cadastroForm.value }).subscribe({
-            next: _ => {
-              this.cpfFormControl.patchValue(this.cadastroForm.get('cpf')!.value);
-              this.senhaFormControl.patchValue(this.cadastroForm.get('senha')!.value);
-              this.cadastro = false;
-              this.moveScroll();
-            }
-          });
         }
       });
+
     }
   }
 
