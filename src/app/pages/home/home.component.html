@@ -91,7 +91,7 @@
         <div class="absolute top-0 right-0 w-16 h-full bg-border-carousel">
         </div>
         <div class="w-full">
-            <div *ngIf="screen_width >= 640" class="relative max-w-screen-lg mt-4 mx-auto">
+            <div class="hidden sm:block relative max-w-screen-lg mt-4 mx-auto">
                 <div id="default-carousel" data-carousel="slide">
                     <div class="relative flex justify-end w-1/2 h-80 mx-auto overflow-hidden rounded-lg">
                         <div class="bg-purple-uai flex duration-700 ease-in-out" data-carousel-item>
@@ -206,7 +206,7 @@
                     </button>
                 </div>
             </div>
-            <div *ngIf="screen_width < 640" class="flex overflow-x-auto gap-8 mt-4">
+            <div class="sm:hidden flex overflow-x-auto gap-8 mt-4">
                 <div
                     class="w-96 h-64 my-auto p-8 mx-auto text-start bg-white-uai rounded-3xl overflow-auto shrink-0 ml-16">
                     <div class="h-full flex flex-col justify-between">
