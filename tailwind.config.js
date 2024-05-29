@@ -21,6 +21,8 @@ module.exports = {
         'blue-light-uai': '#F1F6FF',
         'white-uai': '#FFFFFF',
         'darkgray-uai': '#212236',
+        'cyan-uai': '#5AC2D6',
+        'light-green-uai': '#5AC2D6',
       },
       height: {
         'carousel': 'calc(100vh - 4rem)',

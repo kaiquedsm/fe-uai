@@ -12,8 +12,8 @@ export class SobreNosComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  teste() {
-    const section = document.getElementById('idTeste');
+  anchor() {
+    const section = document.getElementById('idAnchor');
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });
     }

@@ -16,7 +16,7 @@
         </div>
     </div>
 
-    <div class="lg:col-span-4 lg:ms-[70%] lg:h-full lg:flex lg:flex-col lg:justify-center w-full relative transition-all duration-[1500ms] ease-in-out flex-grow pt-8 lg:pt-0"
+    <div class="lg:col-span-4 lg:ms-[70%] lg:h-full lg:flex lg:flex-col lg:justify-center w-full relative transition-all duration-[1500ms] ease-in-out flex-grow pt-20 xs:pt-16 lg:pt-0"
         [ngClass]="{'lg:-translate-x-[100vw] lg:-translate-y-0 lg:-z-20': cadastro}">
         <h2 class="lg:text-5xl text-center font-semibold text-blue-uai text-3xl">Bem vindo!</h2>
         <small class="lg:text-xl lg:mt-2 text-blue-uai text-center block text-sm font-semibold opacity-70">Faça seu
@@ -36,7 +36,7 @@
                     class="rounded-full w-full bg-zinc-200 border border-zinc-300 px-5" placeholder="Senha *"
                     [formControl]="senhaFormControl" required>
                 <i class="fa-regular absolute top-1/2 -translate-y-1/2 right-16 text-blue-uai cursor-pointer"
-                    [ngClass]="{'fa-eye': !mostrarSenha, 'fa-eye-slash': mostrarSenha}"
+                    [ngClass]="{'fa-eye': !mostrarSenha, 'fa-eye-slash': mostrarSenha, 'text-red-500': senhaFormControl.invalid && (senhaFormControl.dirty || senhaFormControl.touched)}"
                     (click)="mostrarSenha = !mostrarSenha"></i>
             </div>
             <!-- <div class="mt-2">
@@ -95,7 +95,7 @@
                         class="rounded-full w-full bg-zinc-200 border border-zinc-300 px-5"
                         placeholder="Senha (mínimo 8 caracteres) *" formControlName="senha" required minlength="8">
                     <i class="fa-regular absolute top-5/7 -translate-y-5/7 mt-3 right-16 text-blue-uai cursor-pointer"
-                        [ngClass]="{'fa-eye': !mostrarSenha, 'fa-eye-slash': mostrarSenha}"
+                        [ngClass]="{'fa-eye': !mostrarSenha, 'fa-eye-slash': mostrarSenha, 'text-red-500': cadastroForm.get('senha')?.invalid && (cadastroForm.get('senha')?.dirty || cadastroForm.get('senha')?.touched)}"
                         (click)="mostrarSenha = !mostrarSenha"></i>
                 </div>
                 <div class="w-full px-16 mt-2 flex gap-2 items-center form-group">
@@ -127,7 +127,7 @@
         </div>
         <div class="lg:absolute lg:mt-4 lg:left-[50vw] lg:transition-all lg:ease-in-out lg:duration-[1500ms] p-4 flex flex-col w-full items-center justify-end flex-grow lg:bg-transparent bg-blue-uai mt-4"
             [ngClass]=" {'lg:-translate-y-[100vh]': !cadastro}">
-            <footer class="mt-6"> <!-- lg:text-white sm:text-white text-blue-uai abaixo-->
+            <footer class="mt-2"> <!-- lg:text-white sm:text-white text-blue-uai abaixo-->
                 <h1 class="lg:text-5xl text-3xl font-semibold text-center text-white">Já
                     possui
                     cadastro?</h1>
